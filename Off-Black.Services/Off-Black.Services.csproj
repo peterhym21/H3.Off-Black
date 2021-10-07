@@ -8,10 +8,15 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="log4net" Version="2.0.12" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Off_Black.Repository\Off-Black.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>

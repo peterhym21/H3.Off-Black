@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Off_Black.DB;
 
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    partial class OffBlackContextModelSnapshot : ModelSnapshot
+    [Migration("20211007075044_AddedExsampeldata")]
+    partial class AddedExsampeldata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,17 +121,20 @@ namespace Off_Black.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("FK_OrderID")
+                    b.Property<int>("FK_ProductID")
                         .HasColumnType("int");
 
-                    b.Property<int>("FK_ProductID")
+                    b.Property<int?>("OrderID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderItmeID");
 
-                    b.HasIndex("FK_OrderID");
+                    b.HasIndex("OrderID");
 
-                    b.HasIndex("FK_ProductID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("OrderItems");
                 });
@@ -142,6 +147,9 @@ namespace Off_Black.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CatagoryCategoryID")
                         .HasColumnType("int");
 
                     b.Property<int>("FK_CategoryID")
@@ -161,7 +169,7 @@ namespace Off_Black.Migrations
 
                     b.HasKey("ProductID");
 
-                    b.HasIndex("FK_CategoryID");
+                    b.HasIndex("CatagoryCategoryID");
 
                     b.ToTable("Products");
 
@@ -224,15 +232,11 @@ namespace Off_Black.Migrations
                 {
                     b.HasOne("Off_Black.Repository.Entities.Order", null)
                         .WithMany("OrderItems")
-                        .HasForeignKey("FK_OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderID");
 
                     b.HasOne("Off_Black.Repository.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("FK_ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductID");
 
                     b.Navigation("Product");
                 });
@@ -241,9 +245,7 @@ namespace Off_Black.Migrations
                 {
                     b.HasOne("Off_Black.Repository.Entities.Catagory", "Catagory")
                         .WithMany("Products")
-                        .HasForeignKey("FK_CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CatagoryCategoryID");
 
                     b.Navigation("Catagory");
                 });

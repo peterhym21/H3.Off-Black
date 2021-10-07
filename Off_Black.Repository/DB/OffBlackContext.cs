@@ -11,11 +11,14 @@ namespace Off_Black.DB
 {
     public class OffBlackContext : DbContext
     {
+        //public OffBlackContext(DbContextOptions<OffBlackContext> optionsBuilder) : base(optionsBuilder)
+        //{
+
+        //}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information)
                 .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBalckDB; Trusted_Connection = True; ");
         }
 
@@ -32,11 +35,17 @@ namespace Off_Black.DB
             modelBuilder.Entity<Customer>().HasOne(b => b.User).WithOne(t => t.Customer).HasForeignKey<Customer>(x => x.FK_UserID);
 
             modelBuilder.Entity<Order>().HasOne(b => b.Customer).WithMany(t => t.Orders).HasForeignKey(i => i.FK_CustomerID);
+            modelBuilder.Entity<Product>().HasOne(b => b.Catagory).WithMany(t => t.Products).HasForeignKey(i => i.FK_CategoryID);
+            modelBuilder.Entity<OrderItem>().HasOne(b => b.Product).WithMany().HasForeignKey(i => i.FK_ProductID);
+            modelBuilder.Entity<Order>().HasMany(b => b.OrderItems).WithOne().HasForeignKey(i => i.FK_OrderID);
 
 
 
             modelBuilder.Entity<Customer>().HasData(
                 new Customer { CustomerID = 1, FirstName = "Peter", LastName = "Hymøller", Adress = "Egedam 4", Email = "Test@test.com", PhoneNumber = "29045782" });
+
+            modelBuilder.Entity<User>().HasData(
+                new User { UserID = 1, FK_CustomerID = 1});
 
             modelBuilder.Entity<Catagory>().HasData(
                 new Catagory { CategoryID = 1, Name = "Sweaaters And Hoodies" });

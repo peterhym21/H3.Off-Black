@@ -12,6 +12,7 @@ namespace Off_Black.Repository.Entities
         public int Amount { get; set; }
 
         public int FK_ProductID { get; set;  }
+        public int FK_OrderID { get; set; }
         public Product Product { get; set; }
     }
 }
