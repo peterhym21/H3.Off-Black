@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Off_Black.Repository.Entities
 {
-    public class Catagory
+    public class Category
     {
         public int CategoryID { get; set; }
         public string Name { get; set; }

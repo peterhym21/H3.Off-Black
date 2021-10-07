@@ -22,8 +22,8 @@ namespace Service.Services
                 cfg.CreateMap<User, UserDTO>();
                 cfg.CreateMap<UserDTO, User>();
 
-                cfg.CreateMap<Catagory, CategoryDTO>();
-                cfg.CreateMap<CategoryDTO, Catagory>();
+                cfg.CreateMap<Category, CategoryDTO>();
+                cfg.CreateMap<CategoryDTO, Category>();
 
                 cfg.CreateMap<Customer, CustomerDTO>();
                 cfg.CreateMap<CustomerDTO, Customer>();

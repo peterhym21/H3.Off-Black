@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Off_Black.Repositories
 {
-    public class ProductRepository : GenericRepository<Product>, IProductRepository
+    public class CusomerRepository : GenericRepository<Customer>, ICusomerRepository
     {
         private readonly OffBlackContext _dbContext;
-        public ProductRepository(OffBlackContext offBlackContext) : base(offBlackContext)
+        public CusomerRepository(OffBlackContext offBlackContext) : base(offBlackContext)
         {
             _dbContext = offBlackContext;
         }
@@ -23,5 +23,6 @@ namespace Off_Black.Repositories
             return await _dbContext.Products.SingleOrDefaultAsync(x => x.ProductID == id);
 
         }
+
     }
 }

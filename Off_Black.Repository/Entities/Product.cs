@@ -16,7 +16,7 @@ namespace Off_Black.Repository.Entities
         public int Amount { get; set; }
 
         public int FK_CategoryID { get; set; }
-        public Catagory Catagory { get; set; }
+        public Category Catagory { get; set; }
 
     }
 }
