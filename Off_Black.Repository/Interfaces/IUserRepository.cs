@@ -13,6 +13,6 @@ namespace Off_Black.Interfaces
         /// Get a singel product from <param name="id"></param> in the Database
         /// </summary>
         /// <returns></returns>
-        Task<Product> GetOneProduct(int id);
+        Task<Product> GetById(int id);
     }
 }

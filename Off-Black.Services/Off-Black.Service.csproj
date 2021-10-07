@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Off_Black.Repository\Off-Black.Repository.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>
