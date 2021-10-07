@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Off_Black.Repositories
 {
-    public class CusomerRepository : GenericRepository<Customer>, ICusomerRepository
+    public class CusomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
         private readonly OffBlackContext _dbContext;
         public CusomerRepository(OffBlackContext offBlackContext) : base(offBlackContext)
