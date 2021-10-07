@@ -5,15 +5,23 @@ namespace Off_Black.DB
 {
     public class OffBlackContext : DbContext
     {
-        //public OffBlackContext(DbContextOptions<OffBlackContext> optionsBuilder) : base(optionsBuilder)
-        //{
+        public OffBlackContext(DbContextOptions<OffBlackContext> optionsBuilder) : base(optionsBuilder)
+        {
 
-        //}
+        }
+
+        public OffBlackContext(DbContextOptions options) : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBalckDB; Trusted_Connection = True; ");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder
+                    .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBalckDB; Trusted_Connection = True; ");
+            }
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
