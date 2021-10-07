@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Automapping;
-using Off_Black.Repository.Entities;
+﻿using Off_Black.Repository.Entities;
 using Off_Black.Services.DTO;
 using System;
 
