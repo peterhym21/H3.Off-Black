@@ -1,4 +1,5 @@
 ﻿using Off_Black.Services.DTO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Off_Black.Services.Interfaces
@@ -10,5 +11,12 @@ namespace Off_Black.Services.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<ProductDTO> GetById(int id);
+
+        /// <summary>
+        /// Get product in the Database sortet by price
+        /// </summary>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetAllSortetPrice();
+
     }
 }

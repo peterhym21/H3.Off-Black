@@ -1,4 +1,5 @@
 ﻿using Off_Black.Repository.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Off_Black.Interfaces
@@ -10,5 +11,12 @@ namespace Off_Black.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<Product> GetById(int id);
+
+        /// <summary>
+        /// Get product in the Database sortet by price
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Product>> GetAllSortetPrice();
+
     }
 }

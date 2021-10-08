@@ -12,7 +12,7 @@ The reason for making this project is to develop skils in LINQ, SQL, DotNET, and
 
 |Project Name|Language|Folder Structure|
 |-|-|-|
-|**|* *|*FBF*|
+|**|* *|**|
 |*Off-Black.Service*|*.Net 5.0*|*FBT*|
 |*Off-Black.Repository*|*.Net 5.0*|*FBT*| 
 

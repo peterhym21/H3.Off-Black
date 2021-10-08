@@ -2,6 +2,8 @@
 using Off_Black.DB;
 using Off_Black.Interfaces;
 using Off_Black.Repository.Entities;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Off_Black.Repositories
@@ -12,6 +14,11 @@ namespace Off_Black.Repositories
         public ProductRepository(OffBlackContext offBlackContext) : base(offBlackContext)
         {
             _dbContext = offBlackContext;
+        }
+
+        public async Task<List<Product>> GetAllSortetPrice()
+        {
+            return await _dbContext.Products.OrderBy(x => x.Price).ToListAsync();
         }
 
         public async Task<Product> GetById(int id)
