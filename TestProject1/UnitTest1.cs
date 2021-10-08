@@ -9,6 +9,7 @@ using Off_Black.Services.Services;
 using Service.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -34,7 +35,26 @@ namespace TestProject1
         }
         #endregion
 
-        #region Get On Product By Id
+        #region Get All Product Sorted By Price
+        [Fact]
+        public async Task Get_All_Products_Sortet_By_Price()
+        {
+            // Arrange
+            OffBlackContext testDb = GetTestDb();
+            await InsertExampleDataProduct(testDb);
+
+            IProductService service = GetTestServiceProduct(testDb);
+
+            // Act
+            List<ProductDTO> result = await service.GetAllSortetPrice();
+
+            // Assert
+            Assert.Equal(10, result.First().Price);
+            Assert.Equal(200, result.Last().Price);
+        }
+        #endregion
+
+        #region Get One Product By Id
         [Fact]
         public async Task Get_One_Product_By_Id()
         {
@@ -52,7 +72,7 @@ namespace TestProject1
         }
         #endregion
 
-        #region Get On Customer By Id
+        #region Get One Customer By Id
         [Fact]
         public async Task Get_One_Customer_By_Id()
         {
@@ -70,7 +90,7 @@ namespace TestProject1
         }
         #endregion
 
-        #region Get On Customer By Id And Check FiirstName Contains SampelData
+        #region Get On Customer By Id And Check FirstName Contains SampelData
         [Fact]
         public async Task Get_One_Customer_By_Id_FirstName_Contains_SampelData()
         {

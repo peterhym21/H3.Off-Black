@@ -12,7 +12,7 @@ The reason for making this project is to develop skils in LINQ, SQL, DotNET, and
 
 |Project Name|Language|Folder Structure|
 |-|-|-|
-|**|* *|*FBF*|
+|**|* *|**|
 |*Off-Black.Service*|*.Net 5.0*|*FBT*|
 |*Off-Black.Repository*|*.Net 5.0*|*FBT*| 
 
@@ -27,6 +27,9 @@ The reason for making this project is to develop skils in LINQ, SQL, DotNET, and
 - [xUnit](https://docs.microsoft.com/en-us/ef/core/testing/in-memory)
 - Basic knowledge of VSTS, GIT and LINQ
 
+## Physical Architecture
+
+![Physical Architecture](Documentation/Physical_Architecture.png)
 
 ## Solution Architecture
 

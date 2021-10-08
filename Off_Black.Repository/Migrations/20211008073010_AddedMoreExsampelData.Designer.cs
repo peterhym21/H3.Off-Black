@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Off_Black.DB;
 
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    partial class OffBlackContextModelSnapshot : ModelSnapshot
+    [Migration("20211008073010_AddedMoreExsampelData")]
+    partial class AddedMoreExsampelData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,7 +100,6 @@ namespace Off_Black.Migrations
                             CustomerID = 1,
                             Adress = "Test 1",
                             Email = "Test1@test.com",
-                            FK_UserID = 1,
                             FirstName = "Peter",
                             LastName = "Hymøller",
                             PhoneNumber = "29045781",
@@ -119,7 +120,6 @@ namespace Off_Black.Migrations
                             CustomerID = 3,
                             Adress = "Test 3",
                             Email = "Test3@test.com",
-                            FK_UserID = 2,
                             FirstName = "Nickolai",
                             LastName = "Heuck",
                             PhoneNumber = "29045783",

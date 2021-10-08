@@ -4,6 +4,7 @@ using Off_Black.Services.DTO;
 using Off_Black.Services.Interfaces;
 using Service.Services;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Off_Black.Services.Services
@@ -16,6 +17,21 @@ namespace Off_Black.Services.Services
         {
             _productRepository = GenericRepository;
             _mappingService = mappingService;
+        }
+
+        public async Task<List<ProductDTO>> GetAllSortetPrice()
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllSortetPrice());
+                LogInformation($"Successfully fetched a list of Products");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
         }
 
         public async Task<ProductDTO> GetById(int id)
