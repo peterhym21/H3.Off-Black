@@ -6,9 +6,9 @@ namespace Off_Black.Interfaces
     public interface ICustomerRepository : IGenericRepository<Customer>
     {
         /// <summary>
-        /// Get a singel product from <param name="id"></param> in the Database
+        /// Get a singel customer from <param name="id"></param> in the Database
         /// </summary>
         /// <returns></returns>
-        Task<Product> GetById(int id);
+        Task<Customer> GetById(int id);
     }
 }

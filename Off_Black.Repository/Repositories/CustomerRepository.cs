@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Off_Black.Repositories
 {
-    public class CusomerRepository : GenericRepository<Customer>, ICustomerRepository
+    public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
         private readonly OffBlackContext _dbContext;
-        public CusomerRepository(OffBlackContext offBlackContext) : base(offBlackContext)
+        public CustomerRepository(OffBlackContext offBlackContext) : base(offBlackContext)
         {
             _dbContext = offBlackContext;
         }
 
-        public async Task<Product> GetById(int id)
+        public async Task<Customer> GetById(int id)
         {
-            return await _dbContext.Products.SingleOrDefaultAsync(x => x.ProductID == id);
+            return await _dbContext.Customers.SingleOrDefaultAsync(x => x.CustomerID == id);
 
         }
 

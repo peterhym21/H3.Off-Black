@@ -14,9 +14,9 @@ namespace Off_Black.Repositories
             _dbContext = offBlackContext;
         }
 
-        public async Task<Product> GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            return await _dbContext.Products.SingleOrDefaultAsync(x => x.ProductID == id);
+            return await _dbContext.Users.SingleOrDefaultAsync(x => x.UserID == id);
 
         }
 
