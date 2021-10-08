@@ -142,13 +142,6 @@ namespace TestProject1
         }
         #endregion
 
-        private static OffBlackContext GetTestDb()
-        {
-            DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("Test").Options;
-            OffBlackContext testDb = new(options);
-            return testDb;
-        }
-
         #region GetServicesTest
         private static IProductService GetTestServiceProduct(OffBlackContext testDb)
         {
@@ -165,6 +158,13 @@ namespace TestProject1
         }
 
         #endregion
+
+        private static OffBlackContext GetTestDb()
+        {
+            DbContextOptions options = new DbContextOptionsBuilder().UseInMemoryDatabase("Test").Options;
+            OffBlackContext testDb = new(options);
+            return testDb;
+        }
 
         #endregion
     }
