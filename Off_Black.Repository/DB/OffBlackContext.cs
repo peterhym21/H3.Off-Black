@@ -5,14 +5,9 @@ namespace Off_Black.DB
 {
     public class OffBlackContext : DbContext
     {
-        public OffBlackContext(DbContextOptions<OffBlackContext> optionsBuilder) : base(optionsBuilder)
-        {
+        public OffBlackContext(DbContextOptions<OffBlackContext> optionsBuilder) : base(optionsBuilder) {}
+        public OffBlackContext(DbContextOptions options) : base(options) {}
 
-        }
-
-        public OffBlackContext(DbContextOptions options) : base(options)
-        {
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -44,10 +39,10 @@ namespace Off_Black.DB
 
 
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { CustomerID = 1, FirstName = "Peter", LastName = "Hymøller", Adress = "Test 1", Email = "Test1@test.com", PhoneNumber = "29045781" },
-                new Customer { CustomerID = 2, FirstName = "Casper", LastName = "Koch", Adress = "Test 2", Email = "Test2@test.com", PhoneNumber = "29045782" },
-                new Customer { CustomerID = 3, FirstName = "Nickolai", LastName = "Heuck", Adress = "Test 3", Email = "Test3@test.com", PhoneNumber = "29045783" },
-                new Customer { CustomerID = 4, FirstName = "Jan", LastName = "Andersen", Adress = "Test 4", Email = "Test4@test.com", PhoneNumber = "29045784" });
+                new Customer { CustomerID = 1, FirstName = "Peter", LastName = "Hymøller", Adress = "Test 1", ZipCode = "6400", Email = "Test1@test.com", PhoneNumber = "29045781", FK_UserID = 1 },
+                new Customer { CustomerID = 2, FirstName = "Casper", LastName = "Koch", Adress = "Test 2", ZipCode = "6400", Email = "Test2@test.com", PhoneNumber = "29045782" },
+                new Customer { CustomerID = 3, FirstName = "Nickolai", LastName = "Heuck", Adress = "Test 3", ZipCode = "6400", Email = "Test3@test.com", PhoneNumber = "29045783", FK_UserID = 2 },
+                new Customer { CustomerID = 4, FirstName = "Jan", LastName = "Andersen", Adress = "Test 4", ZipCode = "6400", Email = "Test4@test.com", PhoneNumber = "29045784" });
 
             modelBuilder.Entity<User>().HasData(
                 new User { UserID = 1, FK_CustomerID = 1},

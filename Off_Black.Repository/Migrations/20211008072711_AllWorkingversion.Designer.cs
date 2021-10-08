@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Off_Black.DB;
 
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    partial class OffBlackContextModelSnapshot : ModelSnapshot
+    [Migration("20211008072711_AllWorkingversion")]
+    partial class AllWorkingversion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,11 +100,9 @@ namespace Off_Black.Migrations
                             CustomerID = 1,
                             Adress = "Test 1",
                             Email = "Test1@test.com",
-                            FK_UserID = 1,
                             FirstName = "Peter",
                             LastName = "Hymøller",
-                            PhoneNumber = "29045781",
-                            ZipCode = "6400"
+                            PhoneNumber = "29045781"
                         },
                         new
                         {
@@ -111,19 +111,16 @@ namespace Off_Black.Migrations
                             Email = "Test2@test.com",
                             FirstName = "Casper",
                             LastName = "Koch",
-                            PhoneNumber = "29045782",
-                            ZipCode = "6400"
+                            PhoneNumber = "29045782"
                         },
                         new
                         {
                             CustomerID = 3,
                             Adress = "Test 3",
                             Email = "Test3@test.com",
-                            FK_UserID = 2,
                             FirstName = "Nickolai",
                             LastName = "Heuck",
-                            PhoneNumber = "29045783",
-                            ZipCode = "6400"
+                            PhoneNumber = "29045783"
                         },
                         new
                         {
@@ -132,8 +129,7 @@ namespace Off_Black.Migrations
                             Email = "Test4@test.com",
                             FirstName = "Jan",
                             LastName = "Andersen",
-                            PhoneNumber = "29045784",
-                            ZipCode = "6400"
+                            PhoneNumber = "29045784"
                         });
                 });
 
