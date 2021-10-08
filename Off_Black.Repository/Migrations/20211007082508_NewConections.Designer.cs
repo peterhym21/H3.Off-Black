@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Off_Black.DB;
 
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    partial class OffBlackContextModelSnapshot : ModelSnapshot
+    [Migration("20211007082508_NewConections")]
+    partial class NewConections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,21 +40,6 @@ namespace Off_Black.Migrations
                         {
                             CategoryID = 1,
                             Name = "Sweaaters And Hoodies"
-                        },
-                        new
-                        {
-                            CategoryID = 2,
-                            Name = "Pants And Sweatpants"
-                        },
-                        new
-                        {
-                            CategoryID = 3,
-                            Name = "T-shirts"
-                        },
-                        new
-                        {
-                            CategoryID = 4,
-                            Name = "Jackets"
                         });
                 });
 
@@ -93,38 +80,11 @@ namespace Off_Black.Migrations
                         new
                         {
                             CustomerID = 1,
-                            Adress = "Test 1",
-                            Email = "Test1@test.com",
+                            Adress = "Egedam 4",
+                            Email = "Test@test.com",
                             FirstName = "Peter",
                             LastName = "Hymøller",
-                            PhoneNumber = "29045781"
-                        },
-                        new
-                        {
-                            CustomerID = 2,
-                            Adress = "Test 2",
-                            Email = "Test2@test.com",
-                            FirstName = "Casper",
-                            LastName = "Koch",
                             PhoneNumber = "29045782"
-                        },
-                        new
-                        {
-                            CustomerID = 3,
-                            Adress = "Test 3",
-                            Email = "Test3@test.com",
-                            FirstName = "Nickolai",
-                            LastName = "Heuck",
-                            PhoneNumber = "29045783"
-                        },
-                        new
-                        {
-                            CustomerID = 4,
-                            Adress = "Test 4",
-                            Email = "Test4@test.com",
-                            FirstName = "Jan",
-                            LastName = "Andersen",
-                            PhoneNumber = "29045784"
                         });
                 });
 
@@ -217,36 +177,6 @@ namespace Off_Black.Migrations
                             ProductDescription = "Long sleeves oversized hooded sweatshirt in black featuring Off logo on the front. Caravaggio arrows printed on the back. Crewneck collar. Rib knit collar, cuffs and hem. Kangaroo pocket.",
                             ProductImagePath = "",
                             ProductName = "Caravaggio Arrows Hoodie"
-                        },
-                        new
-                        {
-                            ProductID = 2,
-                            Amount = 50,
-                            FK_CategoryID = 3,
-                            Price = 2316.00m,
-                            ProductDescription = "Short sleeves T-shirt in black featuring Caravaggio painting on the front. Crewneck collar. Slim fit.",
-                            ProductImagePath = "",
-                            ProductName = "Caravaggio Painting S/S T-Shirt"
-                        },
-                        new
-                        {
-                            ProductID = 3,
-                            Amount = 12,
-                            FK_CategoryID = 2,
-                            Price = 7073.00m,
-                            ProductDescription = "Straight leg formal pants in black. Logo patch sewn at front. Pockets at back. Button closure. Zip-fly. Four-pocket styling.",
-                            ProductImagePath = "",
-                            ProductName = "Formal Pants"
-                        },
-                        new
-                        {
-                            ProductID = 4,
-                            Amount = 21,
-                            FK_CategoryID = 4,
-                            Price = 13430.00m,
-                            ProductDescription = "Hybrid padded leather shirt in black featuring metallic swimming logo at chest and knitted sleeves. Rib knit collar cuffs and hem.",
-                            ProductImagePath = "",
-                            ProductName = "Padded Leather Shirt"
                         });
                 });
 
@@ -269,11 +199,6 @@ namespace Off_Black.Migrations
                         {
                             UserID = 1,
                             FK_CustomerID = 1
-                        },
-                        new
-                        {
-                            UserID = 2,
-                            FK_CustomerID = 3
                         });
                 });
 

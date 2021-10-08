@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 
-namespace Off_Black.Services.DTO
+namespace Off_Black.Repository.Entities
 {
-    public class CategoryDTO
+    public class Category
     {
         public int CategoryID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<ProductDTO> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
+        
     }
 }
