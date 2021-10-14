@@ -1,0 +1,16 @@
+[
+  {
+    "outputFileName": "wwwroot/js/bundles/danfoss.js",
+    "inputFiles": [
+      "wwwroot/js/danfossLoader.js",
+      "wwwroot/js/danfossNav.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/danfoss.css",
+    "inputFiles": [
+      "wwwroot/css/danfossNav.css",
+      "wwwroot/css/danfossLoader.css"
+    ]
+  }
+]

@@ -67,14 +67,14 @@ Copy the files to the IIS Server's share, after the publish is finished.
 |Library|Version|
 |-|-|
 |Automapper|10.1.1|
-|Coverlet.collector|3.0.2|
+|Coverlet.collector|3.1.0|
 |FluentNHibernate|3.1.0|
 |Log4Net|2.0.12|
-|Microsoft.EntityFrameworkCore.InMemory|5.0.10|
-|Microsoft.EntityFrameworkCore.SqlServer|5.0.10|
-|Microsoft.EntityFrameworkCore.Tools|5.0.10|
+|Microsoft.EntityFrameworkCore.InMemory|5.0.11|
+|Microsoft.EntityFrameworkCore.SqlServer|5.0.11|
+|Microsoft.EntityFrameworkCore.Tools|5.0.11|
 |Microsoft.EntityFrameworkCore.Console|5.0.0|
-|Microsoft.NET.Test.SDK|16.9.4|
+|Microsoft.NET.Test.SDK|16.11.0|
 |XUnit|2.4.1|
 |XUnit Runner|2.4.3|
 
