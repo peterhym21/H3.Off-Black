@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Off-Black</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -19,8 +21,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" asp-area="" asp-page="/Men/Men" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Men
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-page="/Men/Men">Clothing</a>
+                                <a class="dropdown-item" asp-page="/Men/Hoodies">Hoodies</a>
+                                <a class="dropdown-item" asp-page="/Men/T-Shirts">T-Shirts</a>
+                                <a class="dropdown-item" asp-page="/Men/Pants">Pants</a>
+                                <a class="dropdown-item" asp-page="/Men/Jackets">Jackets</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" asp-area="" asp-page="/Woman/Woman" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Woman
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-page="/Woman/Woman">Clothing</a>
+                                <a class="dropdown-item" asp-page="/Woman/Hoodies">Hoodies</a>
+                                <a class="dropdown-item" asp-page="/Woman/T-Shirts">T-Shirts</a>
+                                <a class="dropdown-item" asp-page="/Woman/Pants">Pants</a>
+                                <a class="dropdown-item" asp-page="/Woman/Jackets">Jackets</a>
+
+                            </div>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Men</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Contact">Contact Us</a>
                         </li>
                     </ul>
                 </div>

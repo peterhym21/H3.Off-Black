@@ -19,6 +19,37 @@ namespace Off_Black.Services.Services
             _mappingService = mappingService;
         }
 
+        public async Task<List<ProductDTO>> GetAllMen()
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllMen());
+                LogInformation($"Successfully fetched a list of Products Where gender = False");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+
+        public async Task<List<ProductDTO>> GetAllWoman()
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllWoman());
+                LogInformation($"Successfully fetched a list of Products Where gender = true");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
         public async Task<List<ProductDTO>> GetAllSortetPrice()
         {
             try

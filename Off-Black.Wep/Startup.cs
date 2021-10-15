@@ -1,9 +1,16 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Off_Black.DB;
+using Off_Black.Interfaces;
+using Off_Black.Repositories;
+using Off_Black.Services.Interfaces;
+using Off_Black.Services.Services;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +29,32 @@ namespace Off_Black.Wep
 
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Scopes
+            services.AddScoped<MappingService, MappingService>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+            services.AddScoped<IOrderItemService, OrderItemService>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            #endregion
+
+            services.AddDbContext<OffBlackContext>(options => options
+                .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBalckDB; Trusted_Connection = True; ")
+                .EnableSensitiveDataLogging(true));
 
             services.AddRazorPages();
         }

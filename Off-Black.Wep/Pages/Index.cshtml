@@ -10,6 +10,24 @@
     <img src="~/Off-Black-logos/Off-black-logo.png" alt="Off-black Logo" height="400" />
 </div>
 
-<div class="text-center">
+<br />
+<br />
 
+<div class="text-center">
+    @foreach (var item in Model.categoryDTO)
+    {
+        <h3>@item.Name</h3>
+        <div class="row">
+            <div class="col-6">
+                <h5>Man</h5>
+                <a asp-page="/Men/@item.Name"><img src="@item.CategoryImage1" alt="CategoryImage" height="400" /></a>
+            </div>
+            <div class="col-6">
+                <h5>Woman</h5>
+                <a asp-page="/Woman/@item.Name"><img src="@item.CategoryImage2" alt="CategoryImage" height="400" /></a>
+            </div>
+        </div>
+        <br />
+
+    }
 </div>

@@ -16,10 +16,21 @@ namespace Off_Black.Repositories
             _dbContext = offBlackContext;
         }
 
+        public async Task<List<Product>> GetAllMen()
+        {
+            return await _dbContext.Products.Where(x => x.Gender == false).ToListAsync();
+        }
+
+        public async Task<List<Product>> GetAllWoman()
+        {
+            return await _dbContext.Products.Where(x => x.Gender == true).ToListAsync();
+        }
+
         public async Task<List<Product>> GetAllSortetPrice()
         {
             return await _dbContext.Products.OrderBy(x => x.Price).ToListAsync();
         }
+
 
         public async Task<Product> GetById(int id)
         {

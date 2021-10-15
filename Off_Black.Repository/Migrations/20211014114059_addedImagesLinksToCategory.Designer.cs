@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Off_Black.DB;
 
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    partial class OffBlackContextModelSnapshot : ModelSnapshot
+    [Migration("20211014114059_addedImagesLinksToCategory")]
+    partial class addedImagesLinksToCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,29 +45,29 @@ namespace Off_Black.Migrations
                         new
                         {
                             CategoryID = 1,
-                            CategoryImage1 = "/Img/Men-Category-Hoodie.png",
-                            CategoryImage2 = "/Img/Woman-Category-Hoodie.png",
-                            Name = "Hoodies"
+                            CategoryImage1 = "~/Img/Men-Category-Hoodie.png",
+                            CategoryImage2 = "~/Img/Woman-Category-Hoodie.png",
+                            Name = "Sweaaters And Hoodies"
                         },
                         new
                         {
                             CategoryID = 2,
-                            CategoryImage1 = "/Img/Men-Category-Tshirt.png",
-                            CategoryImage2 = "/Img/Woman-Category-Tshirt.png",
-                            Name = "T-Shirts"
+                            CategoryImage1 = "~/Img/Men-Category-Pants.png",
+                            CategoryImage2 = "~/Img/Woman-Category-Pants.png",
+                            Name = "Pants And Sweatpants"
                         },
                         new
                         {
                             CategoryID = 3,
-                            CategoryImage1 = "/Img/Men-Category-Pants.png",
-                            CategoryImage2 = "/Img/Woman-Category-Pants.png",
-                            Name = "Pants"
+                            CategoryImage1 = "~/Img/Men-Category-Tshirt.png",
+                            CategoryImage2 = "~/Img/Woman-Category-Tshirt.png",
+                            Name = "T-shirts"
                         },
                         new
                         {
                             CategoryID = 4,
-                            CategoryImage1 = "/Img/Men-Category-Jackets.png",
-                            CategoryImage2 = "/Img/Woman-Category-Jackets.png",
+                            CategoryImage1 = "~/Img/Men-Category-Jackets.png",
+                            CategoryImage2 = "~/Img/Woman-Category-Jackets.png",
                             Name = "Jackets"
                         });
                 });
@@ -242,29 +244,29 @@ namespace Off_Black.Migrations
                             Gender = false,
                             Price = 3832.00m,
                             ProductDescription = "Long sleeves oversized hooded sweatshirt in black featuring Off logo on the front. Caravaggio arrows printed on the back. Crewneck collar. Rib knit collar, cuffs and hem. Kangaroo pocket.",
-                            ProductImagePath = "/Img/Men-Caravaggio-Hoodie.png",
+                            ProductImagePath = "~/Img/Men-Caravaggio-Hoodie.png",
                             ProductName = "Caravaggio Arrows Hoodie"
                         },
                         new
                         {
                             ProductID = 2,
                             Amount = 50,
-                            FK_CategoryID = 2,
+                            FK_CategoryID = 3,
                             Gender = false,
                             Price = 2316.00m,
                             ProductDescription = "Short sleeves T-shirt in black featuring Caravaggio painting on the front. Crewneck collar. Slim fit.",
-                            ProductImagePath = "/Img/Men-Caravaggio-tshirt.png",
+                            ProductImagePath = "~/Img/Men-Caravaggio-tshirt.png",
                             ProductName = "Caravaggio Painting S/S T-Shirt"
                         },
                         new
                         {
                             ProductID = 3,
                             Amount = 12,
-                            FK_CategoryID = 3,
+                            FK_CategoryID = 2,
                             Gender = false,
                             Price = 7073.00m,
                             ProductDescription = "Straight leg formal pants in black. Logo patch sewn at front. Pockets at back. Button closure. Zip-fly. Four-pocket styling.",
-                            ProductImagePath = "/Img/Men-Formal-pants.png",
+                            ProductImagePath = "~/Img/Men-Formal-pants.png",
                             ProductName = "Formal Pants"
                         },
                         new
@@ -275,7 +277,7 @@ namespace Off_Black.Migrations
                             Gender = false,
                             Price = 13430.00m,
                             ProductDescription = "Hybrid padded leather shirt in black featuring metallic swimming logo at chest and knitted sleeves. Rib knit collar cuffs and hem.",
-                            ProductImagePath = "/Img/Men-Padded-leather-shirt.png",
+                            ProductImagePath = "~/Img/Men-Padded-leather-shirt.png",
                             ProductName = "Padded Leather Shirt"
                         },
                         new
@@ -286,29 +288,29 @@ namespace Off_Black.Migrations
                             Gender = true,
                             Price = 5052.00m,
                             ProductDescription = "Long sleeves hooded sweatshirt with sprayed multicolor pattern allover. Elasticized hem and cuffs. Black strings.",
-                            ProductImagePath = "/Img/Woman-Offkat-Allover-Spay-Hoodie.png",
+                            ProductImagePath = "~/Img/Woman-Offkat-Allover-Spay-Hoodie.png",
                             ProductName = "Offkat Allover Spray Hoodie"
                         },
                         new
                         {
                             ProductID = 6,
                             Amount = 40,
-                            FK_CategoryID = 2,
+                            FK_CategoryID = 3,
                             Gender = true,
                             Price = 2231.00m,
                             ProductDescription = "Sleeveless bodysuit in black with OFF printed in white at chest.",
-                            ProductImagePath = "/Img/Woman-Ribbed-Bodysuit.png",
+                            ProductImagePath = "~/Img/Woman-Ribbed-Bodysuit.png",
                             ProductName = "Ribbed Bodysuit"
                         },
                         new
                         {
                             ProductID = 7,
                             Amount = 30,
-                            FK_CategoryID = 3,
+                            FK_CategoryID = 2,
                             Gender = true,
                             Price = 8715.00m,
                             ProductDescription = "Formal pant with multicolor pattern allover. Pockets at front and back. Zip fly. Belt loops.",
-                            ProductImagePath = "/Img/Woman-Offkat-cady-Pants.png",
+                            ProductImagePath = "~/Img/Woman-Offkat-cady-Pants.png",
                             ProductName = "Offkat Cady Pants"
                         },
                         new
@@ -319,7 +321,7 @@ namespace Off_Black.Migrations
                             Gender = true,
                             Price = 15704.00m,
                             ProductDescription = "Tomboy jacket in multicolor pattern allover. Pockets at front. Breast pocket. Buttons closure",
-                            ProductImagePath = "/Img/Woman-Offkat-tomboy-jacket.png",
+                            ProductImagePath = "~/Img/Woman-Offkat-tomboy-jacket.png",
                             ProductName = "Offkat Tomboy Jacket"
                         });
                 });

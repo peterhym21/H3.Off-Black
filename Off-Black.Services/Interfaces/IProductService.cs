@@ -18,5 +18,18 @@ namespace Off_Black.Services.Interfaces
         /// <returns></returns>
         Task<List<ProductDTO>> GetAllSortetPrice();
 
+        /// <summary>
+        /// Get product in the Database Where Gender = ture
+        /// </summary>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetAllWoman();
+
+
+        /// <summary>
+        /// Get product in the Database Where Gender = false
+        /// </summary>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetAllMen();
+
     }
 }
