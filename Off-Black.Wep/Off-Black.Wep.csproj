@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Off-Black.Services\Off-Black.Service.csproj" />
-    <ProjectReference Include="..\Off_Black.Repository\Off-Black.Repository.csproj" />
   </ItemGroup>
 
 </Project>

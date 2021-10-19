@@ -1,0 +1,14 @@
+﻿@model List<OrderItemDTO>?
+
+<div class="card card-body bg-light">
+    @if (Model != null)
+    {
+        int items = 0;
+        foreach (var item in Model)
+        {
+            items += item.Amount;
+        }
+        <p>@items</p>
+    }
+
+</div>

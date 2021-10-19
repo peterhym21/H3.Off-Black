@@ -1,4 +1,8 @@
-﻿@page
+﻿@page "{CategoryId:int}"
 @model Off_Black.Wep.Pages.Men.PantsModel
-@{
-}
+
+
+<div class="row">
+    <partial name="_ProductView" model="@Model.ProductDTOs" />
+
+</div>

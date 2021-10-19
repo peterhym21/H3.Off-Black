@@ -20,5 +20,20 @@ namespace Off_Black.Services.Services
             _orderItemRepository = GenericRepository;
             _mappingService = mappingService;
         }
+
+        public async Task<OrderItemDTO> GetLastOrderItem()
+        {
+            try
+            {
+                OrderItemDTO orderItem = _mappingService._mapper.Map<OrderItemDTO>(await _orderItemRepository.GetLastOrderItem());
+                LogInformation($"Successfully fetched the Last Orderitem");
+                return orderItem;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch the last Orderitem", e);
+                return null;
+            }
+        }
     }
 }

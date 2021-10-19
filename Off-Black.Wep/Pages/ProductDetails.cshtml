@@ -1,0 +1,17 @@
+﻿@page "{ProductId:int}"
+@model Off_Black.Wep.Pages.ProductDetailsModel
+@{
+}
+<h2>@Model.Product.ProductName</h2>
+
+<h4>@Model.Product.Price</h4>
+
+<p>@Model.Product.ProductDescription</p>
+
+<img src="@Model.Product.ProductImagePath" alt="Alternate Text" height="300" />
+
+
+<form method="post">
+    <p hidden>@Model.Product.ProductID</p>
+    <button type="submit" class="btn btn-success">Add to Cart</button>
+</form>

@@ -56,6 +56,21 @@ namespace Off_Black.Wep
                 .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBalckDB; Trusted_Connection = True; ")
                 .EnableSensitiveDataLogging(true));
 
+            services.AddDistributedMemoryCache();
+
+            #region SESSION
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                //options.IdleTimeout = TimeSpan.FromSeconds(100);
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential  
+                options.Cookie.IsEssential = true;
+            });
+            #endregion
+
             services.AddRazorPages();
         }
 
@@ -77,7 +92,10 @@ namespace Off_Black.Wep
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

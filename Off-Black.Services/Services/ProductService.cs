@@ -34,6 +34,21 @@ namespace Off_Black.Services.Services
             }
         }
 
+        public async Task<List<ProductDTO>> GetAllMenByCategory(int Id)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllMenByCategory(Id));
+                LogInformation($"Successfully fetched a list of Products Where gender = False and CategoryId = Id: {Id}");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
 
         public async Task<List<ProductDTO>> GetAllWoman()
         {
@@ -41,6 +56,21 @@ namespace Off_Black.Services.Services
             {
                 List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllWoman());
                 LogInformation($"Successfully fetched a list of Products Where gender = true");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+        public async Task<List<ProductDTO>> GetAllWomanByCategory(int Id)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllWomanByCategory(Id));
+                LogInformation($"Successfully fetched a list of Products Where gender = False and CategoryId = Id: {Id}");
                 return products;
             }
             catch (Exception e)
@@ -84,5 +114,20 @@ namespace Off_Black.Services.Services
                 return null;
             }
         }
+        public async Task<List<ProductDTO>> GetAllByCategory(int Id)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllByCategory(Id));
+                LogInformation($"Successfully fetched a list of Products Where gender = False and CategoryId = Id: {Id}");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
     }
 }

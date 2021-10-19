@@ -21,14 +21,28 @@ namespace Off_Black.Repositories
             return await _dbContext.Products.Where(x => x.Gender == false).ToListAsync();
         }
 
+        public async Task<List<Product>> GetAllMenByCategory(int Id)
+        {
+            return await _dbContext.Products.Where(x => x.Gender == false && x.FK_CategoryID == Id).ToListAsync();
+        }
+
         public async Task<List<Product>> GetAllWoman()
         {
             return await _dbContext.Products.Where(x => x.Gender == true).ToListAsync();
         }
 
+        public async Task<List<Product>> GetAllWomanByCategory(int Id)
+        {
+            return await _dbContext.Products.Where(x => x.Gender == true && x.FK_CategoryID == Id).ToListAsync();
+        }
+
         public async Task<List<Product>> GetAllSortetPrice()
         {
             return await _dbContext.Products.OrderBy(x => x.Price).ToListAsync();
+        }
+        public async Task<List<Product>> GetAllByCategory(int Id)
+        {
+            return await _dbContext.Products.Where(x => x.FK_CategoryID == Id).ToListAsync();
         }
 
 
@@ -37,5 +51,7 @@ namespace Off_Black.Repositories
             return await _dbContext.Products.SingleOrDefaultAsync(x => x.ProductID == id);
 
         }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Off_Black.Services.DTO;
+﻿
+using Off_Black.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ namespace Off_Black.Services.Interfaces
 {
     public interface IOrderItemService : IGenericService<OrderItemDTO>
     {
-        
+        /// <summary>
+        /// Get the Last OrderItem
+        /// </summary>
+        /// <returns></returns>
+        Task<OrderItemDTO> GetLastOrderItem();
     }
 }

@@ -21,10 +21,10 @@ namespace Off_Black.Wep.Pages
             _productService = productService;
         }
 
-        public List<ProductDTO> productDTOs { get; set; }
+        public List<ProductDTO> ProductDTOs { get; set; }
         public async Task OnGet()
         {
-            productDTOs = await _productService.GetAllMen();
+            ProductDTOs = await _productService.GetAllMen();
 
         }
     }
