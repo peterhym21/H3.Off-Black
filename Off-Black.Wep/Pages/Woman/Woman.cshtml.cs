@@ -21,10 +21,26 @@ namespace Off_Black.Wep.Pages.Woman
             _productService = productService;
         }
 
+        [BindProperty]
+        public string SeachTearm { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public int CurrentPage { get; set; } = 1;
+        public int Count { get; set; }
+        public int PageSize { get; set; } = 2;
         public List<ProductDTO> ProductDTOs { get; set; }
-        public async Task OnGet()
+
+        public int TotalPages => (int)Math.Ceiling(decimal.Divide(Count, PageSize));
+
+        public async Task OnGetAsync()
         {
-            ProductDTOs = await _productService.GetAllWoman();
+            ProductDTOs = await _productService.GetPaginatedResultWoman(CurrentPage, PageSize);
+            Count = await _productService.GetCountWoman();
+        }
+
+        public async Task OnPostAsync()
+        {
+            ProductDTOs = await _productService.GetAllBySeachTearm(SeachTearm);
 
         }
     }

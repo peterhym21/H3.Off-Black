@@ -1,7 +1,6 @@
 ﻿@model List<ProductDTO>
 @foreach (var item in Model)
 {
-
     <div class=" col-6">
         <a class="RemoveLinkStyel" asp-page="../ProductDetails" asp-route-ProductId="@item.ProductID">
             <img src="@item.ProductImagePath" alt="CategoryImage" height="400" />
@@ -10,5 +9,4 @@
             <br />
         </a>
     </div>
-
 }

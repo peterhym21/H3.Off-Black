@@ -129,5 +129,59 @@ namespace Off_Black.Services.Services
             }
         }
 
+        public async Task<List<ProductDTO>> GetPaginatedResultMen(int currentPage, int pageSize = 10)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetPaginatedResultMen(currentPage, pageSize));
+                LogInformation($"Successfully fetched a list of Products ");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+        public async Task<List<ProductDTO>> GetPaginatedResultWoman(int currentPage, int pageSize = 10)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetPaginatedResultWoman(currentPage, pageSize));
+                LogInformation($"Successfully fetched a list of Products ");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+        public async Task<int> GetCountMen()
+        {
+            var data = await GetAllMen();
+            return data.Count;
+        }
+        public async Task<int> GetCountWoman()
+        {
+            var data = await GetAllWoman();
+            return data.Count;
+        }
+
+        public async Task<List<ProductDTO>> GetAllBySeachTearm(string seachtearm)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllBySeachTearm(seachtearm));
+                LogInformation($"Successfully fetched a list of Products Where Name = Seachtearm : {seachtearm}");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products  Where Name = Seachtearm : {seachtearm}", e);
+                return new List<ProductDTO>();
+            }
+        }
     }
 }

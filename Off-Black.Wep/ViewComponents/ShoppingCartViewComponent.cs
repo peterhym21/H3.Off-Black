@@ -11,7 +11,7 @@ namespace Off_Black.Wep.ViewComponents
 {
     public class ShoppingCartViewComponent : ViewComponent
     {
-        #region SESSION DEMO
+        #region SESSION
         public const string SessionKeyLastReviewed = "_SeesionKey";
         public int? SessionInfo_LastReviewed { get; private set; }
         #endregion
@@ -20,7 +20,6 @@ namespace Off_Black.Wep.ViewComponents
         {
             if (HttpContext.Session.GetString("_SeesionKey") != null)
             {
-                string meep = HttpContext.Session.GetString("_SeesionKey");
                 List<OrderItemDTO> session = JsonConvert.DeserializeObject<List<OrderItemDTO>>(HttpContext.Session.GetString("_SeesionKey"));
                 return View(session);
             }
@@ -30,6 +29,5 @@ namespace Off_Black.Wep.ViewComponents
                 return View(test);
             }
         }
-
     }
 }

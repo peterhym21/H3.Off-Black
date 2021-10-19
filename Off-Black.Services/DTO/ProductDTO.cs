@@ -12,7 +12,7 @@
         /// If bool = true = womman
         /// if bool = false = men
         /// </summary>
-        public bool ManWoman { get; set; }
+        public bool Gender { get; set; }
 
         public int FK_CategoryID { get; set; }
         public CategoryDTO Catagory { get; set; }

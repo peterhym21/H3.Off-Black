@@ -25,10 +25,7 @@ namespace Off_Black.Wep.Pages
             _productService = productService;
             _orderItemService = orderItemService;
         }
-        #region SESSION DEMO
         public const string SessionKeyLastReviewed = "_SeesionKey";
-        public int? SessionInfo_LastReviewed { get; private set; }
-        #endregion
 
         [BindProperty]
         public ProductDTO Product { get; set; }
@@ -42,40 +39,42 @@ namespace Off_Black.Wep.Pages
         public async Task<IActionResult> OnPost()
         {
             List<OrderItemDTO> session = new List<OrderItemDTO>();
+            OrderItemDTO sessionItem = null;
             #region SESSION 
 
             if (HttpContext.Session.GetString("_SeesionKey") != null)
             {
                 session = JsonConvert.DeserializeObject<List<OrderItemDTO>>(HttpContext.Session.GetString("_SeesionKey"));
-                OrderItemDTO OrderItem = session.FirstOrDefault(o => o.FK_ProductID == Product.ProductID);
+                sessionItem = session.FirstOrDefault(o => o.FK_ProductID == Product.ProductID);
 
-                if (OrderItem != null)
+                if (sessionItem != null)
                 {
-                    OrderItem.Amount++;
-                }
-                else
-                {
-                    OrderItem = new OrderItemDTO();
-                    OrderItem.Amount = 1;
-                    OrderItem.FK_ProductID = Product.ProductID;
-                    session.Add(OrderItem);
+                    sessionItem.Amount++;
                 }
             }
-            else
+            if (sessionItem == null)
             {
-                OrderItemDTO OrderItem = new OrderItemDTO();
-                OrderItem.Amount = 1;
-                OrderItem.FK_ProductID = Product.ProductID;
-                session.Add(OrderItem);
+                session.Add(new OrderItemDTO()
+                {
+                    Amount = 1,
+                    FK_ProductID = Product.ProductID,
+                    Product = Product
+                }); ;
             }
-
-
             string sessionitem = JsonConvert.SerializeObject(session);
 
             HttpContext.Session.SetString(SessionKeyLastReviewed, sessionitem);
             #endregion
 
-            return RedirectToPage("/Men/Men");
+            if (Product.Gender)
+            {
+                return RedirectToPage("/Woman/Woman");
+            }
+            else
+            {
+                return RedirectToPage("/Men/Men");
+            }
+            
         }
 
     }

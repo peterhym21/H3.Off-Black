@@ -50,5 +50,28 @@ namespace Off_Black.Services.Interfaces
         /// <returns></returns>
         Task<List<ProductDTO>> GetAllByCategory(int Id);
 
+        /// <summary>
+        /// Paging for alle cloth category
+        /// </summary>
+        /// <param name="currentPage"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetPaginatedResultMen(int currentPage, int pageSize = 10);
+        Task<List<ProductDTO>> GetPaginatedResultWoman(int currentPage, int pageSize = 10);
+
+        /// <summary>
+        /// get number of products
+        /// </summary>
+        /// <returns></returns>
+        Task<int> GetCountMen();
+        Task<int> GetCountWoman();
+
+        /// <summary>
+        /// Get Products by Seachtearm
+        /// </summary>
+        /// <param name="seachtearm"></param>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetAllBySeachTearm(string seachtearm);
+
     }
 }

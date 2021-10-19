@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Off_Black.Interfaces
 {
-    public interface IProductRepository :  IGenericRepository<Product>
+    public interface IProductRepository : IGenericRepository<Product>
     {
         /// <summary>
         /// Get a singel product from <param name="id"></param> in the Database
@@ -49,6 +49,22 @@ namespace Off_Black.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<List<Product>> GetAllByCategory(int Id);
+
+        /// <summary>
+        /// Paging for alle cloth category
+        /// </summary>
+        /// <param name="currentPage"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        Task<List<Product>> GetPaginatedResultMen(int currentPage, int pageSize = 10);
+        Task<List<Product>> GetPaginatedResultWoman(int currentPage, int pageSize = 10);
+
+        /// <summary>
+        /// Get Products by Seachtearm
+        /// </summary>
+        /// <param name="seachtearm"></param>
+        /// <returns></returns>
+        Task<List<Product>> GetAllBySeachTearm(string seachtearm);
 
     }
 }

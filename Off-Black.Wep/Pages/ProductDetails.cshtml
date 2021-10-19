@@ -12,6 +12,14 @@
 
 
 <form method="post">
-    <p hidden>@Model.Product.ProductID</p>
+    <input type="hidden" asp-for="Product.ProductID" />
+    <input type="hidden" asp-for="Product.Amount" />
+    <input type="hidden" asp-for="Product.Gender" />
+    <input type="hidden" asp-for="Product.Catagory" />
+    <input type="hidden" asp-for="Product.FK_CategoryID" />
+    <input type="hidden" asp-for="Product.Price" />
+    <input type="hidden" asp-for="Product.ProductDescription" />
+    <input type="hidden" asp-for="Product.ProductImagePath" />
+    <input type="hidden" asp-for="Product.ProductName" />
     <button type="submit" class="btn btn-success">Add to Cart</button>
 </form>

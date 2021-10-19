@@ -1,0 +1,24 @@
+﻿@page
+@model Off_Black.Wep.Pages.CartModel
+
+<div class="text-center col-12">
+    <table class="text-center col-12 table">
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+        @foreach (var cartitems in Model.CartItems)
+        {
+            <tr>
+                <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="100" /></td>
+                <td>@cartitems.Product.ProductName</td>
+                <td>@cartitems.Product.Price kr.</td>
+                <td><input type="number" placeholder="@cartitems.Amount" /></td>
+
+            </tr>
+        }
+
+    </table>
+</div>

@@ -53,5 +53,21 @@ namespace Off_Black.Repositories
         }
 
 
+        public async Task<List<Product>> GetPaginatedResultMen(int currentPage, int pageSize = 10)
+        {
+            var data = await GetAllMen();
+            return data.OrderBy(d => d.ProductID).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+        }
+        public async Task<List<Product>> GetPaginatedResultWoman(int currentPage, int pageSize = 10)
+        {
+            var data = await GetAllWoman();
+            return data.OrderBy(d => d.ProductID).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+        }
+
+        public async Task<List<Product>> GetAllBySeachTearm(string seachtearm)
+        {
+            return await _dbContext.Products.Where(x => x.ProductName.Contains(seachtearm)).ToListAsync();
+        }
+
     }
 }
