@@ -16,7 +16,7 @@ namespace Off_Black.Repositories
 
         public async Task<User> GetById(int id)
         {
-            return await _dbContext.Users.SingleOrDefaultAsync(x => x.UserID == id);
+            return await _dbContext.Users.AsNoTracking().SingleOrDefaultAsync(x => x.UserID == id);
 
         }
 

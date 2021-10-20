@@ -1,13 +1,17 @@
-﻿@page
+﻿@page 
 @model Off_Black.Wep.Pages.MenModel
 
 
 <form method="post">
     <div class="input-group text-right">
-        <input type="search" class="form-control" placeholder="Search.." asp-for="SeachTearm">
+        <select asp-for="@Model.PageSize" asp-items="Html.GetEnumSelectList<Off_Black.Wep.Pages.MenModel.PageSizeEnum>()">
+            <option value="">Pagesize</option>
+        </select>
         <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
     </div>
 </form>
+
+
 
     <br />
     <div class="row">
@@ -19,7 +23,10 @@
             @for (var i = 1; i <= Model.TotalPages; i++)
             {
                 <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                    <a asp-page="/Men/Men" asp-route-currentpage="@i" class="page-link">@i</a>
+                    <a asp-page="" 
+                       asp-route-currentpage="@i" 
+                       asp-route-pagesize="@Model.PageSize" 
+                       class="page-link">@i</a>
                 </li>
             }
         </ul>

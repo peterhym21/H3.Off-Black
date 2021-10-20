@@ -25,7 +25,8 @@ namespace Off_Black.Wep
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureLogging(builder => builder.AddFile())
+                    .UseStartup<Startup>();
                 });
     }
 }

@@ -17,7 +17,7 @@ namespace Off_Black.Repositories
 
         public async Task<OrderItem> GetLastOrderItem()
         {
-            return await _dbContext.OrderItems.OrderBy(x => x.OrderItmeID).LastOrDefaultAsync();
+            return await _dbContext.OrderItems.OrderBy(x => x.OrderItmeID).AsNoTracking().LastOrDefaultAsync();
         }
     }
 }

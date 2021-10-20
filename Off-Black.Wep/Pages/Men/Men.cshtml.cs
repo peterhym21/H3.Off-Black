@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,25 +22,38 @@ namespace Off_Black.Wep.Pages
             _productService = productService;
         }
 
-        [BindProperty]
-        public string SeachTearm { get; set; }
-
         [BindProperty(SupportsGet = true)]
         public int CurrentPage { get; set; } = 1;
         public int Count { get; set; }
-        public int PageSize { get; set; } = 2;
+        [BindProperty(SupportsGet = true)]
+        public int PageSize { get; set; } = 1;
         public List<ProductDTO> ProductDTOs { get; set; }
 
         public int TotalPages => (int)Math.Ceiling(decimal.Divide(Count, PageSize));
+
+        public enum PageSizeEnum
+        {
+            [Display(Name = "2")]
+            _2 = 2,
+            [Display(Name = "5")]
+            _5 = 5,
+            [Display(Name = "10")]
+            _10 = 10,
+            [Display(Name = "15")]
+            _15 = 15
+        }
 
         public async Task OnGetAsync()
         {
             ProductDTOs = await _productService.GetPaginatedResultMen(CurrentPage, PageSize);
             Count = await _productService.GetCountMen();
         }
+
         public async Task OnPostAsync()
         {
-            ProductDTOs = await _productService.GetAllBySeachTearm(SeachTearm);
+            ProductDTOs = await _productService.GetPaginatedResultMen(CurrentPage, PageSize);
+            Count = await _productService.GetCountMen();
+
 
         }
 

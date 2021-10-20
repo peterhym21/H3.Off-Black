@@ -13,8 +13,46 @@
 <br />
 <br />
 
+<form method="post">
+    <div class="input-group w-50 mx-auto col-12 ">
+        <input type="search" placeholder="Seach Here" asp-for="@Model.SearchTerm" />
+        <select asp-for="@Model.PriceFilter">
+            <option>High-Low</option>
+            <option>Low-High</option>
+        </select>
+        <select asp-for="@Model.PageSize" asp-items="Html.GetEnumSelectList<Off_Black.Wep.Pages.IndexModel.PageSizeEnum>()">
+            <option value="">Pagesize</option>
+        </select>
+        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+    </div>
+</form>
+
+
+
+<div class="row">
+    <partial name="_ProductView" model="@Model.ProductDTOs" />
+
+</div>
+
+<div>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a asp-page=""
+                   asp-route-currentpage="@i"
+                   asp-route-searchterm="@Model.SearchTerm"
+                   asp-route-pagesize="@Model.PageSize"
+                   class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<br />
+
 <div class="text-center">
-    @foreach (var item in Model.categoryDTO)
+    @foreach (var item in Model.CategoryDTO)
     {
         <h3>@item.Name</h3>
         <div class="row">
@@ -31,3 +69,5 @@
 
     }
 </div>
+
+

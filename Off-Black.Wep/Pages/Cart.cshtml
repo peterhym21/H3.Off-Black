@@ -9,16 +9,44 @@
             <th>Price</th>
             <th>Amount</th>
         </tr>
-        @foreach (var cartitems in Model.CartItems)
+        @foreach (var cartitems in Model.CartItems.OrderItems)
         {
             <tr>
                 <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="100" /></td>
                 <td>@cartitems.Product.ProductName</td>
                 <td>@cartitems.Product.Price kr.</td>
-                <td><input type="number" placeholder="@cartitems.Amount" /></td>
-
+                <form method="post" asp-page-handler="Update">
+                <td><input type="number" value="@cartitems.Amount" asp-for="@Model.Amount" /></td>
+                <td>
+                    @{Model.ProductId = cartitems.Product.ProductID; }
+                    <input type="hidden" asp-for="@Model.ProductId" />
+                    <button type="submit" class="btn btn-info">Update</button>
+                </td>
+                </form>
+                <td>
+                    <form method="post" asp-page-handler="Delete">
+                        @{Model.ProductId = cartitems.Product.ProductID; }
+                        <input type="hidden" asp-for="@Model.ProductId" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
 
     </table>
+    <div>
+        <h3>Toalt Price : @Model.CartItems.TotalPrice</h3>
+    </div>
+    <div>
+        <div class="float-right">
+            <form method="post">
+                <input type="hidden" asp-for="@Model.CartItems" />
+                <button type="submit" class="btn btn-success">Checkout</button>
+            </form>
+        </div>
+        <div class="float-left">
+            <button asp-page="/Index" class="btn btn-info">Keep Looking</button>
+        </div>
+    </div>
+
 </div>

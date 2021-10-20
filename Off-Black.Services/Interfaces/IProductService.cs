@@ -16,7 +16,12 @@ namespace Off_Black.Services.Interfaces
         /// Get product in the Database sortet by price
         /// </summary>
         /// <returns></returns>
-        Task<List<ProductDTO>> GetAllSortetPrice();
+        Task<List<ProductDTO>> GetAllSortetPriceASC();
+        /// <summary>
+        /// Get product in the Database sortet by price
+        /// </summary>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetAllSortetPriceDESC();
 
         /// <summary>
         /// Get product in the Database Where Gender = ture
@@ -65,13 +70,23 @@ namespace Off_Black.Services.Interfaces
         /// <returns></returns>
         Task<int> GetCountMen();
         Task<int> GetCountWoman();
+        Task<int> GetCountAll(string searchterm);
 
         /// <summary>
         /// Get Products by Seachtearm
         /// </summary>
-        /// <param name="seachtearm"></param>
+        /// <param name="searchterm"></param>
         /// <returns></returns>
-        Task<List<ProductDTO>> GetAllBySeachTearm(string seachtearm);
+        Task<List<ProductDTO>> GetAllBySeachTearm(string searchterm);
+
+        /// <summary>
+        /// Get all products with all seachtarms for men and woman
+        /// </summary>
+        /// <param name="searchterm"></param>
+        /// <param name="currentPage"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        Task<List<ProductDTO>> GetAllByAllFilters(string searchterm, int currentPage, int pageSize = 10);
 
     }
 }

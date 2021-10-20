@@ -19,6 +19,8 @@ namespace Off_Black.Services.Services
             _mappingService = mappingService;
         }
 
+        #region Men
+
         public async Task<List<ProductDTO>> GetAllMen()
         {
             try
@@ -49,6 +51,30 @@ namespace Off_Black.Services.Services
             }
         }
 
+        public async Task<List<ProductDTO>> GetPaginatedResultMen(int currentPage, int pageSize = 10)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetPaginatedResultMen(currentPage, pageSize));
+                LogInformation($"Successfully fetched a list of Products ");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+        public async Task<int> GetCountMen()
+        {
+            var data = await GetAllMen();
+            return data.Count;
+        }
+
+        #endregion
+
+        #region Woman
 
         public async Task<List<ProductDTO>> GetAllWoman()
         {
@@ -80,11 +106,49 @@ namespace Off_Black.Services.Services
             }
         }
 
-        public async Task<List<ProductDTO>> GetAllSortetPrice()
+        public async Task<List<ProductDTO>> GetPaginatedResultWoman(int currentPage, int pageSize = 10)
         {
             try
             {
-                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllSortetPrice());
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetPaginatedResultWoman(currentPage, pageSize));
+                LogInformation($"Successfully fetched a list of Products ");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+        public async Task<int> GetCountWoman()
+        {
+            var data = await GetAllWoman();
+            return data.Count;
+        }
+
+        #endregion
+
+        public async Task<List<ProductDTO>> GetAllSortetPriceASC()
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllSortetPriceASC());
+                LogInformation($"Successfully fetched a list of Products");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+        public async Task<List<ProductDTO>> GetAllSortetPriceDESC()
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllSortetPriceDESC());
                 LogInformation($"Successfully fetched a list of Products");
                 return products;
             }
@@ -129,11 +193,27 @@ namespace Off_Black.Services.Services
             }
         }
 
-        public async Task<List<ProductDTO>> GetPaginatedResultMen(int currentPage, int pageSize = 10)
+        public async Task<List<ProductDTO>> GetAllBySeachTearm(string searchterm)
         {
             try
             {
-                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetPaginatedResultMen(currentPage, pageSize));
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllBySeachTearm(searchterm));
+                LogInformation($"Successfully fetched a list of Products Where Name = Seachtearm : {searchterm}");
+                return products;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch a list of Products  Where Name = Seachtearm : {searchterm}", e);
+                return new List<ProductDTO>();
+            }
+        }
+
+
+        public async Task<List<ProductDTO>> GetAllByAllFilters(string searchterm, int currentPage, int pageSize = 10)
+        {
+            try
+            {
+                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllByAllFilters(searchterm, currentPage, pageSize));
                 LogInformation($"Successfully fetched a list of Products ");
                 return products;
             }
@@ -144,44 +224,10 @@ namespace Off_Black.Services.Services
             }
         }
 
-        public async Task<List<ProductDTO>> GetPaginatedResultWoman(int currentPage, int pageSize = 10)
+        public async Task<int> GetCountAll(string searchterm)
         {
-            try
-            {
-                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetPaginatedResultWoman(currentPage, pageSize));
-                LogInformation($"Successfully fetched a list of Products ");
-                return products;
-            }
-            catch (Exception e)
-            {
-                LogError($"Failed to fetch a list of Products", e);
-                return new List<ProductDTO>();
-            }
-        }
-        public async Task<int> GetCountMen()
-        {
-            var data = await GetAllMen();
-            return data.Count;
-        }
-        public async Task<int> GetCountWoman()
-        {
-            var data = await GetAllWoman();
-            return data.Count;
-        }
-
-        public async Task<List<ProductDTO>> GetAllBySeachTearm(string seachtearm)
-        {
-            try
-            {
-                List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllBySeachTearm(seachtearm));
-                LogInformation($"Successfully fetched a list of Products Where Name = Seachtearm : {seachtearm}");
-                return products;
-            }
-            catch (Exception e)
-            {
-                LogError($"Failed to fetch a list of Products  Where Name = Seachtearm : {seachtearm}", e);
-                return new List<ProductDTO>();
-            }
+            List<ProductDTO> products = _mappingService._mapper.Map<List<ProductDTO>>(await _productRepository.GetAllBySeachTearm(searchterm));
+            return products.Count;
         }
     }
 }
