@@ -39,14 +39,10 @@
     </div>
     <div>
         <div class="float-right">
-            <form method="post">
-                <input type="hidden" asp-for="@Model.CartItems" />
-                <button type="submit" class="btn btn-success">Checkout</button>
-            </form>
+            <a asp-page="/Checkout/CustomerInfo" class="btn btn-success">Checkout</a>
         </div>
         <div class="float-left">
-            <button asp-page="/Index" class="btn btn-info">Keep Looking</button>
+            <a asp-page="/Index" class="btn btn-info">Keep Looking</a>
         </div>
     </div>
-
 </div>

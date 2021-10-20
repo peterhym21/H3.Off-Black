@@ -18,7 +18,7 @@
 - [X] Varekurven viser en opdateret liste af valgte produkter, med billede, navn, styk-pris, antal (skal kunne ændres) samt linjepriseen.
 - [X] Der skal være en Update knap, som opdaterer priserne hvis man ændrer antallet.
 - [X] Det skal være muligt at fjerne et produkt fra varekurven, hvis man fortryder valget
-- [ ] <mark> Der skal være en Checkout knap, som fører til Checkout-siden
+- [X] Der skal være en Checkout knap, som fører til Checkout-siden
 - [X] Der skal være en knap, der giver mulighed for at fortsætte med at handle, inden man går til checkout
 
 
