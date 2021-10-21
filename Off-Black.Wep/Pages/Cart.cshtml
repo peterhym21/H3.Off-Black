@@ -1,0 +1,48 @@
+﻿@page
+@model Off_Black.Wep.Pages.CartModel
+
+<div class="text-center col-12">
+    <table class="text-center col-12 table">
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+        @foreach (var cartitems in Model.CartItems.OrderItems)
+        {
+            <tr>
+                <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="100" /></td>
+                <td>@cartitems.Product.ProductName</td>
+                <td>@cartitems.Product.Price kr.</td>
+                <form method="post" asp-page-handler="Update">
+                <td><input type="number" value="@cartitems.Amount" asp-for="@Model.Amount" /></td>
+                <td>
+                    @{Model.ProductId = cartitems.Product.ProductID; }
+                    <input type="hidden" asp-for="@Model.ProductId" />
+                    <button type="submit" class="btn btn-info">Update</button>
+                </td>
+                </form>
+                <td>
+                    <form method="post" asp-page-handler="Delete">
+                        @{Model.ProductId = cartitems.Product.ProductID; }
+                        <input type="hidden" asp-for="@Model.ProductId" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        <h3>Toalt Price : @Model.CartItems.TotalPrice</h3>
+    </div>
+    <div>
+        <div class="float-right">
+            <a asp-page="/Checkout/Checkout" class="btn btn-success">Checkout</a>
+        </div>
+        <div class="float-left">
+            <a asp-page="/Index" class="btn btn-info">Keep Looking</a>
+        </div>
+    </div>
+</div>

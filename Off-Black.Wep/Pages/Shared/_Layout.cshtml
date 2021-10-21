@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Off-Black</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/Off-Black-logos/Off-black-logo.png" height="60" />
+                </a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" asp-area="" asp-page="/Men/Men" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Men
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-page="/Men/Men">Clothing</a>
+                                <a class="dropdown-item" asp-page="/Men/Hoodies" asp-route-CategoryId="1">Hoodies</a>
+                                <a class="dropdown-item" asp-page="/Men/T-Shirts" asp-route-CategoryId="2">T-Shirts</a>
+                                <a class="dropdown-item" asp-page="/Men/Pants" asp-route-CategoryId="3">Pants</a>
+                                <a class="dropdown-item" asp-page="/Men/Jackets" asp-route-CategoryId="4">Jackets</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" asp-area="" asp-page="/Woman/Woman" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Woman
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-page="/Woman/Woman">Clothing</a>
+                                <a class="dropdown-item" asp-page="/Woman/Hoodies" asp-route-CategoryId="1">Hoodies</a>
+                                <a class="dropdown-item" asp-page="/Woman/T-Shirts" asp-route-CategoryId="2">T-Shirts</a>
+                                <a class="dropdown-item" asp-page="/Woman/Pants" asp-route-CategoryId="3">Pants</a>
+                                <a class="dropdown-item" asp-page="/Woman/Jackets" asp-route-CategoryId="4">Jackets</a>
+
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-page="/Contact">Contact Us</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="float-right">
+                <vc:shopping-cart></vc:shopping-cart>
+            </div>
+        </nav>
+       
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Off-Black - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

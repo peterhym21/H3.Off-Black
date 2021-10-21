@@ -1,0 +1,21 @@
+﻿@model List<OrderItemDTO>?
+
+
+
+@if (Model != null)
+{
+    <div class="card card-body bg-light">
+        @{int items = 0;
+            foreach (var item in Model)
+            {
+                items += item.Amount;
+            }
+        }
+        
+        <a asp-page="../Cart" class="btn btn-info">
+            <label>Cart:</label>
+            @items
+        </a>
+    </div>
+}
+

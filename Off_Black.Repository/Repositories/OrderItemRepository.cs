@@ -1,6 +1,9 @@
-﻿using Off_Black.DB;
+﻿using Microsoft.EntityFrameworkCore;
+using Off_Black.DB;
 using Off_Black.Interfaces;
 using Off_Black.Repository.Entities;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Off_Black.Repositories
 {
@@ -10,6 +13,19 @@ namespace Off_Black.Repositories
         public OrderItemRepository(OffBlackContext offBlackContext) : base(offBlackContext)
         {
             _dbContext = offBlackContext;
+        }
+
+        public async Task<OrderItem> GetLastOrderItem()
+        {
+            return await _dbContext.OrderItems.OrderBy(x => x.OrderItmeID).LastOrDefaultAsync();
+        }
+
+        public async Task CustomCreate(OrderItem orderItem)
+        {
+            _dbContext.Attach(orderItem.Product);
+            _dbContext.Add(orderItem);
+            await _dbContext.SaveChangesAsync();
+
         }
     }
 }

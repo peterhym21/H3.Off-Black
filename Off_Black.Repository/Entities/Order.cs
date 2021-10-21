@@ -6,7 +6,7 @@ namespace Off_Black.Repository.Entities
     public class Order
     {
         public int OrderID { get; set; }
-        public int TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; }
