@@ -10,5 +10,7 @@ namespace Off_Black.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<OrderItem> GetLastOrderItem();
+
+        Task CustomCreate(OrderItem orderItem);
     }
 }

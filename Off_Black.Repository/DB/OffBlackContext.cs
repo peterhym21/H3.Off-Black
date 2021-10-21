@@ -23,7 +23,7 @@ namespace Off_Black.DB
             modelBuilder.Entity<Order>().HasOne(b => b.Customer).WithMany(t => t.Orders).HasForeignKey(i => i.FK_CustomerID);
             modelBuilder.Entity<Product>().HasOne(b => b.Catagory).WithMany(t => t.Products).HasForeignKey(i => i.FK_CategoryID);
             modelBuilder.Entity<OrderItem>().HasOne(b => b.Product).WithMany().HasForeignKey(i => i.FK_ProductID);
-            modelBuilder.Entity<Order>().HasMany(b => b.OrderItems).WithOne().HasForeignKey(i => i.FK_OrderID);
+            modelBuilder.Entity<Order>().HasMany(b => b.OrderItems).WithOne(x => x.Order).HasForeignKey(i => i.FK_OrderID);
 
 
 

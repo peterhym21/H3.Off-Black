@@ -1,4 +1,5 @@
 ﻿
+using Off_Black.Repository.Entities;
 using Off_Black.Services.DTO;
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,7 @@ namespace Off_Black.Services.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<OrderItemDTO> GetLastOrderItem();
+
+        Task CustomCreate(OrderItemDTO orderItem);
     }
 }

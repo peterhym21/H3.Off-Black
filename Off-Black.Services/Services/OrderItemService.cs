@@ -21,6 +21,19 @@ namespace Off_Black.Services.Services
             _mappingService = mappingService;
         }
 
+        public async Task CustomCreate(OrderItemDTO orderItem)
+        {
+            try
+            {
+                await _orderItemRepository.CustomCreate(_mappingService._mapper.Map<OrderItem>(orderItem));
+                LogInformation($"Successfully created a new {orderItem} ");
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to create a new {orderItem} ", e);
+            }
+        }
+
         public async Task<OrderItemDTO> GetLastOrderItem()
         {
             try

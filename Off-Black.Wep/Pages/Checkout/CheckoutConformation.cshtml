@@ -1,0 +1,26 @@
+﻿@page
+@model Off_Black.Wep.Pages.Checkout.CheckoutConformationModel
+
+
+<div class="text-center">
+    <h2>Tak For din Bestilling</h2>
+    <h4>Din order er på vej til dig</h4>
+    <br />
+    <table class="text-center col-12 table">
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Amount</th>
+        </tr>
+        @foreach (var cartitems in Model.Order.OrderItems)
+        {
+            <tr>
+                <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="75" /></td>
+                <td>@cartitems.Product.ProductName</td>
+                <td>@cartitems.Amount</td>
+            </tr>
+        }
+
+    </table>
+
+</div>

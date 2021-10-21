@@ -40,5 +40,20 @@ namespace Off_Black.Services.Services
                 return null;
             }
         }
+
+        public async Task<CustomerDTO> GetLastCustomer()
+        {
+            try
+            {
+                CustomerDTO customer = _mappingService._mapper.Map<CustomerDTO>(await _customerRepository.GetLastCustomer());
+                LogInformation($"Successfully fetched the last Customer)");
+                return customer;
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to fetch the last customer)", e);
+                return null;
+            }
+        }
     }
 }

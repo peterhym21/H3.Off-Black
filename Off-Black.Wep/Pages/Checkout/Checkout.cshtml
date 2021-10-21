@@ -12,7 +12,7 @@
                         <th>Price</th>
                         <th>Amount</th>
                     </tr>
-                    @foreach (var cartitems in Model.CartItems.OrderItems)
+                    @foreach (var cartitems in Model.Order.OrderItems)
                     {
                         <tr>
                             <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="75" /></td>
@@ -24,12 +24,13 @@
 
                 </table>
                 <div>
-                    <h3>Toalt Price : @Model.CartItems.TotalPrice</h3>
+                    <h3>Toalt Price : @Model.Order.TotalPrice</h3>
                 </div>
             </div>
         </div>
 
         <form method="post" class="col-8">
+            <input type="hidden" asp-for="@Model.Order" />
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label>First name</label>
@@ -45,7 +46,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label>Phone Number</label>
-                    <input type="tel" class="form-control" placeholder="Phone Number" aria-describedby="inputGroupPrepend3" required asp-for="@Model.Customer.Email" />
+                    <input type="tel" class="form-control" placeholder="Phone Number" aria-describedby="inputGroupPrepend3" required asp-for="@Model.Customer.PhoneNumber" />
                 </div>
             </div>
             <div class="form-row">

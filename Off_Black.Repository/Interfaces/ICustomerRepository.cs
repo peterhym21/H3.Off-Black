@@ -10,5 +10,11 @@ namespace Off_Black.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<Customer> GetById(int id);
+
+        /// <summary>
+        /// Get last custoerm created
+        /// </summary>
+        /// <returns></returns>
+        Task<Customer> GetLastCustomer();
     }
 }

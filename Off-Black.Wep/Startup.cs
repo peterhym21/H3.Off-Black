@@ -53,7 +53,7 @@ namespace Off_Black.Wep
             #endregion
 
             services.AddDbContext<OffBlackContext>(options => options
-                .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBalckDB; Trusted_Connection = True; ")
+                .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBlackDB; Trusted_Connection = True; ")
                 .EnableSensitiveDataLogging(true));
 
             services.AddDistributedMemoryCache();

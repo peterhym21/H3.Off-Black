@@ -376,7 +376,7 @@ namespace Off_Black.Migrations
 
             modelBuilder.Entity("Off_Black.Repository.Entities.OrderItem", b =>
                 {
-                    b.HasOne("Off_Black.Repository.Entities.Order", null)
+                    b.HasOne("Off_Black.Repository.Entities.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("FK_OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -387,6 +387,8 @@ namespace Off_Black.Migrations
                         .HasForeignKey("FK_ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
