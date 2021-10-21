@@ -48,7 +48,7 @@ because it is needed for dependency injection in [Startup.cs](Off-Black.Wep/Star
 
 ![E R Diagram](Documentation/ER-Diagram.png)
 
-[Entity details](Documentation/DatabaseEntityDetails.md) 
+[Entity details](Documentation/EntityDetails.md) 
 
 
 ## Deployment
