@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +48,8 @@ namespace Off_Black.Wep.Pages.Checkout
             HttpContext.Session.SetString(SessionKeyLastReviewed, sessionitems);
             #endregion
             Order = await _orderService.GetLastOrder();
+
+            await _orderService.SendEmail(Order);
 
         }
     }

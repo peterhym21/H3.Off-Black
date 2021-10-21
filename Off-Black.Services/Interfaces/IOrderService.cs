@@ -16,5 +16,8 @@ namespace Off_Black.Services.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<OrderDTO> GetLastOrder();
+
+        Task SendEmail(OrderDTO order);
+
     }
 }

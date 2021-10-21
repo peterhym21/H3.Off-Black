@@ -12,7 +12,7 @@ The reason for making this project is to develop skils in LINQ, SQL, DotNET, and
 
 |Project Name|Language|Folder Structure|
 |-|-|-|
-|**|* *|**|
+|*Off-Black.Wep*|*.NET 5.0*|*FBF*|
 |*Off-Black.Service*|*.Net 5.0*|*FBT*|
 |*Off-Black.Repository*|*.Net 5.0*|*FBT*| 
 
@@ -39,13 +39,16 @@ The solution is built with a 3-tier architecture. It starts with a presentation 
 This layer calls down to the service layer with all the business logic, without presentation layer specific code. 
 The next layer is the repository that handles the database and sql execution, and it is only accessible by the service layer. 
 But there is a little flaw in this design, and it means that the presentation layer also have access to the repository, 
-because it is needed for dependency injection in [Startup.cs](Proje/Startup.cs)
+because it is needed for dependency injection in [Startup.cs](Off-Black.Wep/Startup.cs)
 
-![Solution Architecture](Documentation/Solution_Architecture.png)
+![Solution Architecture](Documentation/Solution_Architecture.png) 
+![Folder Strucktore](Documentation/FolderStrucktore.png)
 
 ## ER-Diagram
 
 ![E R Diagram](Documentation/ER-Diagram.png)
+
+[Entity details](Documentation/DatabaseEntityDetails.md) 
 
 
 ## Deployment
@@ -67,13 +70,16 @@ Copy the files to the IIS Server's share, after the publish is finished.
 |Library|Version|
 |-|-|
 |Automapper|10.1.1|
-|Coverlet.collector|3.1.0|
 |FluentNHibernate|3.1.0|
 |Log4Net|2.0.12|
+|Microsoft.EntityFrameworkCore|5.0.11|
+|Microsoft.EntityFrameworkCore.Design|5.0.11|
 |Microsoft.EntityFrameworkCore.InMemory|5.0.11|
 |Microsoft.EntityFrameworkCore.SqlServer|5.0.11|
 |Microsoft.EntityFrameworkCore.Tools|5.0.11|
 |Microsoft.EntityFrameworkCore.Console|5.0.0|
+|Microsoft.VisualStudio.Web.BrowserLink|2.2.0|
+|NetEscapades.Extensions.Logging.RollingFile|2.4.1|
 |Microsoft.NET.Test.SDK|16.11.0|
 |XUnit|2.4.1|
 |XUnit Runner|2.4.3|
@@ -82,4 +88,6 @@ Copy the files to the IIS Server's share, after the publish is finished.
 
 |Name|E-mail|Role|
 |-|-|-|
-|Peter Hymoller|Peter.hymoller@danfoss.com|Developer|
+|Peter Hymoller|peterhym21@gmail.com|Developer|
+
+

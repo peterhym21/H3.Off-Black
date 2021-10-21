@@ -25,7 +25,7 @@
 ### C. Krav til checkout
 
 - [X] Brugeren skal afgive oplysninger om email, navn, adresse, valg af betalingsmiddel og forsendelse
-- [ ] <mark> Når brugeren trykke på Køb knappen, skal der udsendes en mail som bekræftelse af købet
+- [X] Når brugeren trykke på Køb knappen, skal der udsendes en mail som bekræftelse af købet
 
 
 ### D. Administration
