@@ -26,7 +26,7 @@
 | Amount                    | int                   | No        |
 | Gender                    | bit                   | No        |
 | FK_CategoryID             | int                   | No        |
-
+|                           |                       |           |
 | Category                  | Category              | Yes       |
 
 
@@ -39,7 +39,7 @@
 | Amount                    | int                   | No        |
 | FK_OrderID                | int                   | No        |
 | FK_ProductID              | int                   | No        |
-
+|                           |                       |           |
 | Products                  | ICollection<Product>  | Yes       |
 | Orders                    | Order                 | Yes       |
 
@@ -54,7 +54,7 @@
 | TotalPrice                | decimal(18, 2)        | No        |
 | OrderDate                 | datetime2(7)          | No        |
 | FK_CustomerID             | int                   | No        |
-
+|                           |                       |           |
 | Customer                  | Customer              | Yes       |
 | OrderItem                 | ICollection<OrderItem>| Yes       |
 
@@ -73,7 +73,7 @@
 | Adress                    | nvarchar(MAX)         | Yes       |
 | ZipCode                   | nvarchar(MAX)         | Yes       |
 | FK_UserID                 | int                   | Yes       |
-
+|                           |                       |           |
 | Orders                    | ICollection<Order>    | Yes       |
 | User                      | User                  | Yes       |
 
@@ -85,5 +85,5 @@
 |---------------------------|-----------------------|-----------|
 | UserID                    | int                   | No        |
 | FK_CustomerID             | int                   | No        |
-
+|                           |                       |           |
 | Customer                  | Customer              | Yes       |
