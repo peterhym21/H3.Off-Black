@@ -9,7 +9,7 @@
 | Name                      | nvarchar(MAX)         | Yes       |
 | CategoryImage1            | nvarchar(MAX)         | Yes       |
 | CategoryImage2            | nvarchar(MAX)         | Yes       |
-
+|                           |                       |           |
 | Products                  | ICollection<Product>  | Yes       |
 
 
