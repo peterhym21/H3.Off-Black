@@ -20,7 +20,7 @@ namespace Off_Black.Repositories
         /// <returns></returns>
         public async Task<Order> GetLastOrder()
         {
-            return await _dbContext.Orders.OrderBy(x => x.OrderID).Include(y => y.OrderItems).ThenInclude(z => z.Product).LastOrDefaultAsync();
+            return await _dbContext.Orders.OrderBy(x => x.OrderID).Include(y => y.OrderItems).ThenInclude(z => z.Product).Include(o => o.Customer).LastOrDefaultAsync();
         }
 
         public async Task CustomCreate(Order order)

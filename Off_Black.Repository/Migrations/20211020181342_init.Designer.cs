@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Off_Black.DB;
 
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    partial class OffBlackContextModelSnapshot : ModelSnapshot
+    [Migration("20211020181342_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,17 +189,17 @@ namespace Off_Black.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("FK_OrderID")
+                    b.Property<int>("FK_ProductID")
                         .HasColumnType("int");
 
-                    b.Property<int>("FK_ProductID")
+                    b.Property<int?>("OrderID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderItmeID");
 
-                    b.HasIndex("FK_OrderID");
-
                     b.HasIndex("FK_ProductID");
+
+                    b.HasIndex("OrderID");
 
                     b.ToTable("OrderItems");
                 });
@@ -376,17 +378,15 @@ namespace Off_Black.Migrations
 
             modelBuilder.Entity("Off_Black.Repository.Entities.OrderItem", b =>
                 {
-                    b.HasOne("Off_Black.Repository.Entities.Order", null)
-                        .WithMany("OrderItems")
-                        .HasForeignKey("FK_OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Off_Black.Repository.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("FK_ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Off_Black.Repository.Entities.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderID");
 
                     b.Navigation("Product");
                 });

@@ -6,6 +6,8 @@ using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,6 +61,25 @@ namespace Off_Black.Services.Services
             {
                 LogError($"Failed to fetch the last Order", e);
                 return null;
+            }
+        }
+
+        public async Task SendEmail(OrderDTO order)
+        {
+            try
+            {
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("SmtpclientPH.meh@gmail.com", "*rI#qkhfWf6EpoUJSak#a6SHdO$8pGS0EI%zHT57&oSf&^jJHX"),
+                    EnableSsl = true
+                };
+                await client.SendMailAsync("SmtpclientPH.meh@gmail.com", order.Customer.Email, "Tak for din bestilling", $"Hej {order.Customer.FirstName} \n Tak fordi du har bestil dine vare ved os");
+
+                LogInformation($"Successfully Send email");
+            }
+            catch (Exception e)
+            {
+                LogError($"Failed to send Email", e);
             }
         }
     }
