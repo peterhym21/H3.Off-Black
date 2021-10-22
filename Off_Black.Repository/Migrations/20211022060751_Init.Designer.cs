@@ -10,8 +10,8 @@ using Off_Black.DB;
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    [Migration("20211021071214_ChangedDBcontext")]
-    partial class ChangedDBcontext
+    [Migration("20211022060751_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -378,7 +378,7 @@ namespace Off_Black.Migrations
 
             modelBuilder.Entity("Off_Black.Repository.Entities.OrderItem", b =>
                 {
-                    b.HasOne("Off_Black.Repository.Entities.Order", null)
+                    b.HasOne("Off_Black.Repository.Entities.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("FK_OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -389,6 +389,8 @@ namespace Off_Black.Migrations
                         .HasForeignKey("FK_ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
