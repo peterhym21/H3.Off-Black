@@ -1,0 +1,40 @@
+﻿@page
+@model Off_Black.Wep.Areas.Admin.IndexModel
+
+
+<form method="post">
+        <button type="submit" class="btn btn-info">Create New Product</button>
+</form>
+
+@foreach (var item in Model.ProductDTOs)
+{
+    <table class="text-center col-12 table">
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+        @foreach (var product in Model.ProductDTOs)
+        {
+            <tr>
+                <td><img src="@product.ProductImagePath" alt="prorduct Image" height="100" /></td>
+                <td>@product.ProductName</td>
+                <td>@product.Price kr.</td>
+                <form method="post" asp-page-handler="Update">
+                <td>
+                    <input type="hidden" asp-for="@product.ProductID" />
+                    <button type="submit" class="btn btn-info">Update</button>
+                </td>
+                </form>
+                <td>
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden" asp-for="@product.ProductID" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
