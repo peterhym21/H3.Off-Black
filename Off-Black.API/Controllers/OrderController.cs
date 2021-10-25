@@ -9,56 +9,79 @@ using System.Threading.Tasks;
 
 namespace Off_Black.API.Controllers
 {
-    //[ApiController]
-    //[Route("[Controller]")]
-    //public class OrderController : ControllerBase
-    //{
+    [ApiController]
+    [Route("[Controller]")]
+    public class OrderController : ControllerBase
+    {
 
-    //    private readonly ICategoryService _categoryService;
+        private readonly IOrderService _orderService;
 
-    //    public OrderController(ICategoryService categoryService)
-    //    {
-    //        _categoryService = categoryService;
-    //    }
+        public OrderController(IOrderService orderService)
+        {
+            _orderService = orderService;
+        }
 
-    //    public Task Create(OrderDTO entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
 
-    //    public Task CustomCreate(OrderDTO order)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpGet]
+        [Route("/AllOrder")]
+        public async Task<List<OrderDTO>> GetAll()
+        {
+            return await _orderService.GetAll();
+        }
 
-    //    public Task CustomUpdate(OrderDTO order)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpGet]
+        [Route("/LastOrder")]
+        public async Task<OrderDTO> GetLastOrder()
+        {
+            return await _orderService.GetLastOrder();
+        }
 
-    //    public Task Delete(OrderDTO entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpPost]
+        [Route("/CreateOrder")]
+        public async Task Create()
+        {
+            OrderDTO order = new OrderDTO();
+            await _orderService.Create(order);
+        }
 
-    //    public Task<List<OrderDTO>> GetAll()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpPost]
+        [Route("/CustomCreateOrder")]
+        public async Task CustomCreate()
+        {
+            OrderDTO order = new OrderDTO();
+            await _orderService.CustomCreate(order);
+        }
 
-    //    public Task<OrderDTO> GetLastOrder()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpPut]
+        [Route("/CustomUpdateOrder")]
+        public async Task CustomUpdate()
+        {
+            OrderDTO order = new OrderDTO();
+            await _orderService.CustomUpdate(order);
+        }
 
-    //    public Task SendEmail(OrderDTO order)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpPut]
+        [Route("/DeleteOrder")]
+        public async Task Delete()
+        {
+            OrderDTO order = new OrderDTO();
+            await _orderService.Delete(order);
+        }
 
-    //    public Task Update(OrderDTO entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+        [HttpPut]
+        [Route("/SendEmail")]
+        public async Task SendEmail()
+        {
+            OrderDTO order = new OrderDTO();
+            await _orderService.SendEmail(order);
+        }
+
+        [HttpPut]
+        [Route("/UpdateOrder")]
+        public async Task Update()
+        {
+            OrderDTO order = new OrderDTO();
+            await _orderService.Update(order);
+        }
+    }
 }

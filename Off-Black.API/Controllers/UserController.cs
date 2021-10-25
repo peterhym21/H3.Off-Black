@@ -9,36 +9,47 @@ using System.Threading.Tasks;
 
 namespace Off_Black.API.Controllers
 {
-    //[ApiController]
-    //[Route("[Controller]")]
-    //public class UserController : ControllerBase
-    //{
+    [ApiController]
+    [Route("[Controller]")]
+    public class UserController : ControllerBase
+    {
 
-    //    private readonly ICategoryService _categoryService;
+        private readonly IUserService _userService;
 
-    //    public UserController(ICategoryService categoryService)
-    //    {
-    //        _categoryService = categoryService;
-    //    }
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
-    //    public Task Create(UserDTO entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpGet]
+        [Route("/AllUser")]
+        public async Task<List<UserDTO>> GetAll()
+        {
+            return await _userService.GetAll();
+        }
 
-    //    public Task Delete(UserDTO entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpPost]
+        [Route("/CreateUser")]
+        public async Task Create()
+        {
+            UserDTO user = new UserDTO();
+            await _userService.Create(user);
+        }
 
-    //    public Task<List<UserDTO>> GetAll()
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        [HttpPut]
+        [Route("/DeleteUser")]
+        public async Task Delete()
+        {
+            UserDTO user = new UserDTO();
+            await _userService.Delete(user);
+        }
 
-    //    public Task Update(UserDTO entity)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
+        [HttpPut]
+        [Route("/UpdateUser")]
+        public async Task Update( )
+        {
+            UserDTO user = new UserDTO();
+            await _userService.Update(user);
+        }
+    }
 }
