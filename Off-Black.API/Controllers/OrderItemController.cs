@@ -37,33 +37,29 @@ namespace Off_Black.API.Controllers
 
         [HttpPost]
         [Route("/CreateOrderItem")]
-        public async Task Create()
+        public async Task Create(OrderItemDTO orderItem)
         {
-            OrderItemDTO orderItem = new OrderItemDTO();
             await _orderItemService.Create(orderItem);
         }
 
         [HttpPost]
         [Route("/CustomCreateOrderItem")]
-        public async Task CustomCreate()
+        public async Task CustomCreate(OrderItemDTO orderItem)
         {
-            OrderItemDTO orderItem = new OrderItemDTO();
             await _orderItemService.CustomCreate(orderItem);
         }
 
         [HttpPut]
         [Route("/DeleteOrderItem")]
-        public async Task Delete()
+        public async Task Delete(OrderItemDTO orderItem)
         {
-            OrderItemDTO orderItem = new OrderItemDTO();
             await _orderItemService.Delete(orderItem);
         }
 
         [HttpPut]
         [Route("/UpdateOrderItem")]
-        public async Task Update()
+        public async Task Update(OrderItemDTO orderItem)
         {
-            OrderItemDTO orderItem = new OrderItemDTO();
             await _orderItemService.Update(orderItem);
         }
     }

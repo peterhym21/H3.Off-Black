@@ -30,25 +30,22 @@ namespace Off_Black.API.Controllers
 
         [HttpPost]
         [Route("/CreateUser")]
-        public async Task Create()
+        public async Task Create(UserDTO user)
         {
-            UserDTO user = new UserDTO();
             await _userService.Create(user);
         }
 
         [HttpPut]
         [Route("/DeleteUser")]
-        public async Task Delete()
+        public async Task Delete(UserDTO user)
         {
-            UserDTO user = new UserDTO();
             await _userService.Delete(user);
         }
 
         [HttpPut]
         [Route("/UpdateUser")]
-        public async Task Update( )
+        public async Task Update(UserDTO user)
         {
-            UserDTO user = new UserDTO();
             await _userService.Update(user);
         }
     }

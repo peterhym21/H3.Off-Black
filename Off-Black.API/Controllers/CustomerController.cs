@@ -29,10 +29,10 @@ namespace Off_Black.API.Controllers
         }
 
         [HttpGet]
-        [Route("/ByIdCustomer")]
-        public async Task<CustomerDTO> GetById()
+        [Route("/ByIdCustomer/{Id:int}")]
+        public async Task<CustomerDTO> GetById(int Id)
         {
-            return await _customerService.GetById(2);
+            return await _customerService.GetById(Id);
         }
 
         [HttpGet]
@@ -44,26 +44,23 @@ namespace Off_Black.API.Controllers
 
         [HttpPost]
         [Route("/CreateCustomer")]
-        public async Task Create()
+        public async Task Create(CustomerDTO customer)
         {
-            CustomerDTO customer = new CustomerDTO();
             await _customerService.Create(customer);
         }
 
         [HttpPut]
         [Route("/DeleteCustomer")]
-        public async Task Delete()
+        public async Task Delete(CustomerDTO customer)
         {
-            CustomerDTO customer = new CustomerDTO();
-            await _customerService.Create(customer);
+            await _customerService.Delete(customer);
         }
 
         [HttpPut]
         [Route("/UpdateCustomer")]
-        public async Task Update()
+        public async Task Update(CustomerDTO customer)
         {
-            CustomerDTO customer = new CustomerDTO();
-            await _customerService.Create(customer);
+            await _customerService.Update(customer);
         }
     }
 }

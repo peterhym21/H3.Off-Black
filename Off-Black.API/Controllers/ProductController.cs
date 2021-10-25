@@ -30,17 +30,17 @@ namespace Off_Black.API.Controllers
         }
 
         [HttpGet]
-        [Route("/AllMenByCategory")]
-        public async Task<List<ProductDTO>> GetAllMenByCategory()
+        [Route("/AllMenByCategory{Id:int}")]
+        public async Task<List<ProductDTO>> GetAllMenByCategory(int Id)
         {
-            return await _productService.GetAllMenByCategory(3);
+            return await _productService.GetAllMenByCategory(Id);
         }
 
         [HttpGet]
-        [Route("/AllManPaged")]
-        public async Task<List<ProductDTO>> GetAllManPaged()
+        [Route("/AllManPaged/{CurrentPage:int}/{PageSize:int}")]
+        public async Task<List<ProductDTO>> GetAllManPaged(int CurrentPage, int PageSize)
         {
-            return await _productService.GetPaginatedResultMen(1, 2);
+            return await _productService.GetPaginatedResultMen(CurrentPage, PageSize);
         }
         [HttpGet]
         [Route("/AllCountMen")]
@@ -61,17 +61,17 @@ namespace Off_Black.API.Controllers
         }
 
         [HttpGet]
-        [Route("/AllWomanByCategory")]
-        public async Task<List<ProductDTO>> GetAllWomanByCategory()
+        [Route("/AllWomanByCategory/{Id:int}")]
+        public async Task<List<ProductDTO>> GetAllWomanByCategory(int Id)
         {
-            return await _productService.GetAllWomanByCategory(3);
+            return await _productService.GetAllWomanByCategory(Id);
         }
 
         [HttpGet]
-        [Route("/AllWomanPaged")]
-        public async Task<List<ProductDTO>> GetAllWomanPaged()
+        [Route("/AllWomanPaged/{CurrentPage:int}/{PageSize:int}")]
+        public async Task<List<ProductDTO>> GetAllWomanPaged(int CurrentPage, int PageSize)
         {
-            return await _productService.GetPaginatedResultWoman(1, 2);
+            return await _productService.GetPaginatedResultWoman(CurrentPage, PageSize);
         }
 
         [HttpGet]
@@ -87,31 +87,31 @@ namespace Off_Black.API.Controllers
 
 
         [HttpGet]
-        [Route("/ByIdProduct")]
-        public async Task<ProductDTO> GetById()
+        [Route("/ByIdProduct/{Id:int}")]
+        public async Task<ProductDTO> GetById(int Id)
         {
-            return await _productService.GetById(2);
+            return await _productService.GetById(Id);
         }
 
         [HttpGet]
-        [Route("/AllBySearchTearmProduct")]
-        public async Task<List<ProductDTO>> GetAllBySearchTearm()
+        [Route("/AllBySearchTearmProduct/{SeachTearm:string}")]
+        public async Task<List<ProductDTO>> GetAllBySearchTearm(string SeachTearm)
         {
-            return await _productService.GetAllBySeachTearm("p");
+            return await _productService.GetAllBySeachTearm(SeachTearm);
         }
 
         [HttpGet]
-        [Route("/AllFiltersProducts")]
-        public async Task<List<ProductDTO>> GetAllByAllFilters()
+        [Route("/AllFiltersProducts/{SeachTearm:string}/{CurrentPage:int}/{PageSize:int}")]
+        public async Task<List<ProductDTO>> GetAllByAllFilters(string SeachTearm, int CurrentPage, int PageSize)
         {
-            return await _productService.GetAllByAllFilters("p", 1, 2);
+            return await _productService.GetAllByAllFilters(SeachTearm, CurrentPage, PageSize);
         }
 
         [HttpGet]
-        [Route("/AllProductsByCategory")]
-        public async Task<List<ProductDTO>> GetAllByCategory()
+        [Route("/AllProductsByCategory/{Id:int}")]
+        public async Task<List<ProductDTO>> GetAllByCategory(int Id)
         {
-            return await _productService.GetAllByCategory(1);
+            return await _productService.GetAllByCategory(Id);
         }
 
         [HttpGet]
@@ -148,26 +148,22 @@ namespace Off_Black.API.Controllers
 
         [HttpPost]
         [Route("/CreateProduct")]
-        public async Task CreateNewProduct()
+        public async Task CreateNewProduct(ProductDTO product)
         {
-            ProductDTO product = new ProductDTO();
-
             await _productService.Create(product);
         }
 
         [HttpPut]
         [Route("/UpdateProduct")]
-        public async Task Update()
+        public async Task Update(ProductDTO product)
         {
-            ProductDTO product = new ProductDTO();
             await _productService.Update(product);
         }
 
         [HttpPut]
         [Route("/DeleteProduct")]
-        public async Task Delete()
+        public async Task Delete(ProductDTO product)
         {
-            ProductDTO product = new ProductDTO();
             await _productService.Delete(product);
         }
     }

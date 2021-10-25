@@ -29,25 +29,22 @@ namespace Off_Black.API.Controllers
 
         [HttpPost]
         [Route("/CreateCategory")]
-        public async Task Create()
+        public async Task Create(CategoryDTO category)
         {
-            CategoryDTO category = new CategoryDTO();
             await _categoryService.Create(category);
         }
 
         [HttpPut]
         [Route("/UpdateCategory")]
-        public async Task Update()
+        public async Task Update(CategoryDTO category)
         {
-            CategoryDTO category = new CategoryDTO();
             await _categoryService.Update(category);
         }
 
         [HttpPut]
         [Route("/DeleteCategory")]
-        public async Task Delete()
+        public async Task Delete(CategoryDTO category)
         {
-            CategoryDTO category = new CategoryDTO();
             await _categoryService.Delete(category);
         }
 
