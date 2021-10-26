@@ -61,6 +61,7 @@ namespace Off_Black.API
                 .EnableSensitiveDataLogging(true));
 
             //services.AddControllers(); // Outputs it Defualt to JSON
+            // services.AddControllers().AddXmlSerializerFormatters() // also output it to XML insted of JSON But Does not work in this project for som reason
             services.AddControllers().AddXmlSerializerFormatters().AddXmlDataContractSerializerFormatters(); // output it to XML insted of JSON
             services.AddSwaggerGen(c =>
             {
