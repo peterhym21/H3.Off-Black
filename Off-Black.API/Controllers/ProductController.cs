@@ -139,7 +139,7 @@ namespace Off_Black.API.Controllers
 
 
         [HttpGet]
-        [Route("/All")]
+        [Route("All")]
         public async Task<List<ProductDTO>> GetAll()
         {
             return await _productService.GetAll();
