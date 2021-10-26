@@ -60,7 +60,8 @@ namespace Off_Black.API
                 .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBlackDB; Trusted_Connection = True; ")
                 .EnableSensitiveDataLogging(true));
 
-            services.AddControllers();
+            //.services.AddControllers().AddXmlSerializerFormatters(); // output it to XML insted of JSON
+            services.AddControllers(); // Outputs it Defualt to JSON
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Off_Black.API", Version = "v1" });

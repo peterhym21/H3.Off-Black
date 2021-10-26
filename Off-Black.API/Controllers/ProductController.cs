@@ -23,27 +23,27 @@ namespace Off_Black.API.Controllers
         #region Men
 
         [HttpGet]
-        [Route("/AllMen")]
+        [Route("AllMen")]
         public async Task<List<ProductDTO>> GetAllMen()
         {
             return await _productService.GetAllMen();
         }
 
         [HttpGet]
-        [Route("/AllMenByCategory{Id:int}")]
+        [Route("AllMenByCategory{Id:int}")]
         public async Task<List<ProductDTO>> GetAllMenByCategory(int Id)
         {
             return await _productService.GetAllMenByCategory(Id);
         }
 
         [HttpGet]
-        [Route("/AllManPaged/{CurrentPage:int}/{PageSize:int}")]
+        [Route("AllManPaged/{CurrentPage:int}/{PageSize:int}")]
         public async Task<List<ProductDTO>> GetAllManPaged(int CurrentPage, int PageSize)
         {
             return await _productService.GetPaginatedResultMen(CurrentPage, PageSize);
         }
         [HttpGet]
-        [Route("/AllCountMen")]
+        [Route("AllCountMen")]
         public async Task<int> GetCountMen()
         {
             return await _productService.GetCountMen();
@@ -54,28 +54,28 @@ namespace Off_Black.API.Controllers
         #region Woman
 
         [HttpGet]
-        [Route("/AllWoman")]
+        [Route("AllWoman")]
         public async Task<List<ProductDTO>> GetAllWoman()
         {
             return await _productService.GetAllWoman();
         }
 
         [HttpGet]
-        [Route("/AllWomanByCategory/{Id:int}")]
+        [Route("AllWomanByCategory/{Id:int}")]
         public async Task<List<ProductDTO>> GetAllWomanByCategory(int Id)
         {
             return await _productService.GetAllWomanByCategory(Id);
         }
 
         [HttpGet]
-        [Route("/AllWomanPaged/{CurrentPage:int}/{PageSize:int}")]
+        [Route("AllWomanPaged/{CurrentPage:int}/{PageSize:int}")]
         public async Task<List<ProductDTO>> GetAllWomanPaged(int CurrentPage, int PageSize)
         {
             return await _productService.GetPaginatedResultWoman(CurrentPage, PageSize);
         }
 
         [HttpGet]
-        [Route("/AllCountWoman")]
+        [Route("AllCountWoman")]
         public async Task<int> GetCountWoman()
         { 
             return await _productService.GetCountWoman();
@@ -87,49 +87,49 @@ namespace Off_Black.API.Controllers
 
 
         [HttpGet]
-        [Route("/ByIdProduct/{Id:int}")]
+        [Route("ById/{Id:int}")]
         public async Task<ProductDTO> GetById(int Id)
         {
             return await _productService.GetById(Id);
         }
 
         [HttpGet]
-        [Route("/AllBySearchTearmProduct/{SeachTearm:string}")]
+        [Route("AllBySearchTearm/{SeachTearm}")]
         public async Task<List<ProductDTO>> GetAllBySearchTearm(string SeachTearm)
         {
             return await _productService.GetAllBySeachTearm(SeachTearm);
         }
 
         [HttpGet]
-        [Route("/AllFiltersProducts/{SeachTearm:string}/{CurrentPage:int}/{PageSize:int}")]
+        [Route("AllFilters/{SeachTearm}/{CurrentPage:int}/{PageSize:int}")]
         public async Task<List<ProductDTO>> GetAllByAllFilters(string SeachTearm, int CurrentPage, int PageSize)
         {
             return await _productService.GetAllByAllFilters(SeachTearm, CurrentPage, PageSize);
         }
 
         [HttpGet]
-        [Route("/AllProductsByCategory/{Id:int}")]
+        [Route("AllByCategory/{Id:int}")]
         public async Task<List<ProductDTO>> GetAllByCategory(int Id)
         {
             return await _productService.GetAllByCategory(Id);
         }
 
         [HttpGet]
-        [Route("/AllSortedPriceASCProducts")]
+        [Route("AllSortedPriceASC")]
         public async Task<List<ProductDTO>> GetAllSortetPriceASC()
         {
             return await _productService.GetAllSortetPriceASC();
         }
 
         [HttpGet]
-        [Route("/AllSortedPriceDESCProducts")]
+        [Route("AllSortedPriceDESC")]
         public async Task<List<ProductDTO>> GetAllSortetPriceDESC()
         {
             return await _productService.GetAllSortetPriceDESC();
         }
 
         [HttpGet]
-        [Route("/AllProductCount")]
+        [Route("AllCount")]
         public async Task<int> GetCountAll()
         {
             return await _productService.GetCountAll("p");
@@ -139,7 +139,7 @@ namespace Off_Black.API.Controllers
 
 
         [HttpGet]
-        [Route("/AllProduct")]
+        [Route("/All")]
         public async Task<List<ProductDTO>> GetAll()
         {
             return await _productService.GetAll();
@@ -147,21 +147,21 @@ namespace Off_Black.API.Controllers
 
 
         [HttpPost]
-        [Route("/CreateProduct")]
+        [Route("Create")]
         public async Task CreateNewProduct(ProductDTO product)
         {
             await _productService.Create(product);
         }
 
         [HttpPut]
-        [Route("/UpdateProduct")]
+        [Route("Update")]
         public async Task Update(ProductDTO product)
         {
             await _productService.Update(product);
         }
 
         [HttpPut]
-        [Route("/DeleteProduct")]
+        [Route("Delete")]
         public async Task Delete(ProductDTO product)
         {
             await _productService.Delete(product);

@@ -23,56 +23,56 @@ namespace Off_Black.API.Controllers
 
 
         [HttpGet]
-        [Route("/AllOrder")]
+        [Route("All")]
         public async Task<List<OrderDTO>> GetAll()
         {
             return await _orderService.GetAll();
         }
 
         [HttpGet]
-        [Route("/LastOrder")]
+        [Route("LastOrder")]
         public async Task<OrderDTO> GetLastOrder()
         {
             return await _orderService.GetLastOrder();
         }
 
         [HttpPost]
-        [Route("/CreateOrder")]
+        [Route("Create")]
         public async Task Create(OrderDTO order)
         {
             await _orderService.Create(order);
         }
 
         [HttpPost]
-        [Route("/CustomCreateOrder")]
+        [Route("CustomCreate")]
         public async Task CustomCreate(OrderDTO order)
         {
             await _orderService.CustomCreate(order);
         }
 
         [HttpPut]
-        [Route("/CustomUpdateOrder")]
+        [Route("CustomUpdate")]
         public async Task CustomUpdate(OrderDTO order)
         {
             await _orderService.CustomUpdate(order);
         }
 
         [HttpPut]
-        [Route("/DeleteOrder")]
+        [Route("Delete")]
         public async Task Delete(OrderDTO order)
         {
             await _orderService.Delete(order);
         }
 
         [HttpPut]
-        [Route("/SendEmail")]
+        [Route("SendEmail")]
         public async Task SendEmail(OrderDTO order)
         {
             await _orderService.SendEmail(order);
         }
 
         [HttpPut]
-        [Route("/UpdateOrder")]
+        [Route("Update")]
         public async Task Update(OrderDTO order)
         {
             await _orderService.Update(order);

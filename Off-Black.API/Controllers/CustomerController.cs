@@ -22,42 +22,42 @@ namespace Off_Black.API.Controllers
         }
 
         [HttpGet]
-        [Route("/AllCustomer")]
+        [Route("All")]
         public async Task<List<CustomerDTO>> GetAll()
         {
             return await _customerService.GetAll();
         }
 
         [HttpGet]
-        [Route("/ByIdCustomer/{Id:int}")]
+        [Route("ById/{Id:int}")]
         public async Task<CustomerDTO> GetById(int Id)
         {
             return await _customerService.GetById(Id);
         }
 
         [HttpGet]
-        [Route("/LastCustomer")]
+        [Route("Last")]
         public async Task<CustomerDTO> GetLastCustomer()
         {
             return await _customerService.GetLastCustomer();
         }
 
         [HttpPost]
-        [Route("/CreateCustomer")]
+        [Route("Create")]
         public async Task Create(CustomerDTO customer)
         {
             await _customerService.Create(customer);
         }
 
         [HttpPut]
-        [Route("/DeleteCustomer")]
+        [Route("Delete")]
         public async Task Delete(CustomerDTO customer)
         {
             await _customerService.Delete(customer);
         }
 
         [HttpPut]
-        [Route("/UpdateCustomer")]
+        [Route("Update")]
         public async Task Update(CustomerDTO customer)
         {
             await _customerService.Update(customer);

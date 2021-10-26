@@ -22,28 +22,28 @@ namespace Off_Black.API.Controllers
         }
 
         [HttpGet]
-        [Route("/AllUser")]
+        [Route("All")]
         public async Task<List<UserDTO>> GetAll()
         {
             return await _userService.GetAll();
         }
 
         [HttpPost]
-        [Route("/CreateUser")]
+        [Route("Create")]
         public async Task Create(UserDTO user)
         {
             await _userService.Create(user);
         }
 
         [HttpPut]
-        [Route("/DeleteUser")]
+        [Route("Delete")]
         public async Task Delete(UserDTO user)
         {
             await _userService.Delete(user);
         }
 
         [HttpPut]
-        [Route("/UpdateUser")]
+        [Route("Update")]
         public async Task Update(UserDTO user)
         {
             await _userService.Update(user);
