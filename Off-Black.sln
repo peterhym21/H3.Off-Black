@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off-Black.Wep", "Off-Black.Wep\Off-Black.Wep.csproj", "{A9D138D6-A464-4D4A-8FB6-AE3857EB669B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Off-Black.API", "Off-Black.API\Off-Black.API.csproj", "{8E10D813-1430-497D-ADCC-3A7B8ED55299}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off-Black.API", "Off-Black.API\Off-Black.API.csproj", "{8E10D813-1430-497D-ADCC-3A7B8ED55299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Off-Black.WebAssembly", "Off-Black.WebAssembly\Off-Black.WebAssembly.csproj", "{0A3FB89D-831F-4E8D-908E-A0F23DB64935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8E10D813-1430-497D-ADCC-3A7B8ED55299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E10D813-1430-497D-ADCC-3A7B8ED55299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E10D813-1430-497D-ADCC-3A7B8ED55299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A3FB89D-831F-4E8D-908E-A0F23DB64935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A3FB89D-831F-4E8D-908E-A0F23DB64935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A3FB89D-831F-4E8D-908E-A0F23DB64935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A3FB89D-831F-4E8D-908E-A0F23DB64935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
