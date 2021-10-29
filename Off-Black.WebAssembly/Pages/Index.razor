@@ -1,7 +1,39 @@
 ﻿@page "/"
+@inject HttpClient Http
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="text-center">
+    @if (categoryDTO != null)
+    {
+        @foreach (var item in categoryDTO)
+        {
+            <h3>@item.Name</h3>
+            <div class="row">
+                <div class="col-6">
+                    <h5>Man</h5>
+                    <img src="@item.CategoryImage1" alt="CategoryImage" height="400" class="hover-shadow" />
+                </div>
+                <div class="col-6">
+                    <h5>Woman</h5>
+                    <img src="@item.CategoryImage2" alt="CategoryImage" height="400" class="hover-shadow" />
+                </div>
+            </div>
+            <br />
+        }
+    }
+</div>
+
+@code{
+
+    public List<CategoryDTO> categoryDTO { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
+    }
+}

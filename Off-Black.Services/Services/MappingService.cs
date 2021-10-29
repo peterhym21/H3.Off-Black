@@ -1,5 +1,5 @@
 ﻿using Off_Black.Repository.Entities;
-using Off_Black.Services.DTO;
+using Off_Black.Service.DTO;
 using System;
 
 namespace Service.Services

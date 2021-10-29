@@ -11,8 +11,8 @@ using Microsoft.OpenApi.Models;
 using Off_Black.DB;
 using Off_Black.Interfaces;
 using Off_Black.Repositories;
-using Off_Black.Services.Interfaces;
-using Off_Black.Services.Services;
+using Off_Black.Service.Interfaces;
+using Off_Black.Service.Services;
 using Service.Services;
 using System;
 using System.Collections.Generic;
@@ -67,6 +67,7 @@ namespace Off_Black.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Off_Black.API", Version = "v1" });
             });
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,6 +81,8 @@ namespace Off_Black.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(o => o.AllowAnyOrigin());
 
             app.UseRouting();
 

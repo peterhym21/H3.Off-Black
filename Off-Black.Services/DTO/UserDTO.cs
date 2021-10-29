@@ -1,4 +1,4 @@
-﻿namespace Off_Black.Services.DTO
+﻿namespace Off_Black.Service.DTO
 {
     public class UserDTO
     {

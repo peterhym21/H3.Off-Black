@@ -1,8 +1,8 @@
-﻿using Off_Black.Services.DTO;
+﻿using Off_Black.Service.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Off_Black.Services.Interfaces
+namespace Off_Black.Service.Interfaces
 {
     public interface IProductService : IGenericService<ProductDTO>
     {
