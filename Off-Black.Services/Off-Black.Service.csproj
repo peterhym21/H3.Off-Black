@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Off_Black.Services</RootNamespace>
+    <RootNamespace>Off_Black.Service</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
