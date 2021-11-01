@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Off_Black.Services.DTO;
-using Off_Black.Services.Interfaces;
+using Off_Black.Service.DTO;
+using Off_Black.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
