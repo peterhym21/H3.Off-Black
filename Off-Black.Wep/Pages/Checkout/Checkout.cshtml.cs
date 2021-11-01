@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Off_Black.Services.DTO;
-using Off_Black.Services.Interfaces;
+using Off_Black.Service.DTO;
+using Off_Black.Service.Interfaces;
 
 namespace Off_Black.Wep.Pages.Checkout
 {

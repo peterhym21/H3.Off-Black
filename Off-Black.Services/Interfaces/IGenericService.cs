@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Off_Black.Services.Interfaces
+namespace Off_Black.Service.Interfaces
 {
     /// <summary>
     /// Generic service interface
