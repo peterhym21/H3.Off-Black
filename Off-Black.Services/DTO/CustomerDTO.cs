@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Off_Black.Services.DTO
+namespace Off_Black.Service.DTO
 {
     public class CustomerDTO
     {
