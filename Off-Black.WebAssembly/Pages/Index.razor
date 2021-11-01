@@ -27,11 +27,22 @@
 
 
 
+
+@* Start API on its own Local Host *@
 @code{
-    //.\Off-Black.API.exe --urls "http://*:4020"    Start API on Port 4020 localhost
-    public List<CategoryDTO> categoryDTO { get; set; } 
-    protected override async Task OnInitializedAsync()
-    {
-        categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
+        //.\Off-Black.API.exe --urls "http://*:4020"    Start API on Port 4020 localhost
+        public List<CategoryDTO> categoryDTO { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
+        }
     }
-}
+
+@* Start Blazer Inside API project *@
+@*@code{
+        public List<CategoryDTO> categoryDTO { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("/api/Category/All");
+        }
+    }*@
