@@ -1,13 +1,13 @@
 ﻿using Off_Black.Interfaces;
 using Off_Black.Repository.Entities;
-using Off_Black.Services.DTO;
-using Off_Black.Services.Interfaces;
+using Off_Black.Service.DTO;
+using Off_Black.Service.Interfaces;
 using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Off_Black.Services.Services
+namespace Off_Black.Service.Services
 {
     public class ProductService : GenericService<ProductDTO, IProductRepository, Product>, IProductService
     {
