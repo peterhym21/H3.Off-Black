@@ -1,5 +1,6 @@
 ﻿@page "/ProdcutDetails/{Id:int}"
 @inject HttpClient Http
+@inject ILocalStorageService LocalStorage
 
 @if (Product != null)
 {
@@ -13,7 +14,8 @@
         <img src="@Product.ProductImagePath" alt="Alternate Text" height="300" />
     </div>
     <br />
-}
+    <button @onclick="AddToCart" class ="btn btn-success">Add to Cart</button>
+    }
 
 
 @code {
@@ -25,5 +27,41 @@
     {
         Product = await Http.GetFromJsonAsync<ProductDTO>($"http://localhost:4020/Product/ById/{Id}");
     }
+
+
+    [CascadingParameter] public MainLayout MainLayout { get; set; }
+
+    public async Task AddToCart()
+    {
+        List<OrderItemDTO> localStorage = new List<OrderItemDTO>();
+        OrderItemDTO localStorageItem = null;
+
+        if (await LocalStorage.ContainKeyAsync("Cart"))
+        {
+            localStorage = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+            localStorageItem = localStorage.FirstOrDefault(o => o.FK_ProductID == Product.ProductID);
+
+            if (localStorageItem != null)
+            {
+                localStorageItem.Amount++;
+            }
+        }
+        if (localStorageItem == null)
+        {
+            localStorage.Add(new OrderItemDTO()
+            {
+                Amount = 1,
+                FK_ProductID = Product.ProductID,
+                Product = Product
+            }); ;
+        }
+        string sessionitem = JsonConvert.SerializeObject(localStorage);
+
+        await LocalStorage.SetItemAsStringAsync("Cart", sessionitem);
+        StateHasChanged();
+        await MainLayout.Update();
+    }
+
+
 }
 

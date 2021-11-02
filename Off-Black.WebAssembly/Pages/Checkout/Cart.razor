@@ -1,0 +1,111 @@
+﻿@page "/Cart"
+@inject ILocalStorageService LocalStorage
+
+
+<table class="text-center col-12 table">
+    <tr>
+        <th>Picture</th>
+        <th>Name</th>
+        <th>Price pr.</th>
+        <th>Price Total Product</th>
+        <th>Amount</th>
+    </tr>
+    @foreach (var cartitems in CartItems.OrderItems)
+    {
+        <tr>
+            <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="100" /></td>
+            <td>@cartitems.Product.ProductName</td>
+            <td>@cartitems.Product.Price kr.</td>
+            <td>@(cartitems.Product.Price * cartitems.Amount) kr.</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" @onclick="() => sub(cartitems.FK_ProductID)" class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                    <div class="btn btn-light">@cartitems.Amount</div>
+                    <button type="button" @onclick="() => Add(cartitems.FK_ProductID)" class="btn btn-success"><i class="fas fa-plus "></i></button>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    <h3>Toalt Price : @CartItems.TotalPrice</h3>
+</div>
+
+
+@code {
+
+    [CascadingParameter] public MainLayout MainLayout { get; set; }
+    public OrderDTO CartItems { get; set; } = new OrderDTO();
+
+    protected override async Task OnInitializedAsync()
+    {
+        CartItems.OrderItems = new List<OrderItemDTO>();
+        CartItems.OrderItems = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+        CartItems.TotalPrice = 0;
+        foreach (var item in CartItems.OrderItems)
+        {
+            if (item.Amount > 1)
+            {
+                for (int i = 0; i < item.Amount; i++)
+                {
+                    CartItems.TotalPrice += item.Product.Price;
+                }
+            }
+            else
+            {
+                CartItems.TotalPrice += item.Product.Price;
+            }
+
+        }
+        base.OnInitialized();
+    }
+
+
+    public async Task Add(int ProductID)
+    {
+        CartItems.OrderItems = new List<OrderItemDTO>();
+        CartItems.OrderItems = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+        OrderItemDTO localStorageItem = CartItems.OrderItems.FirstOrDefault(o => o.FK_ProductID == ProductID);
+
+        if (localStorageItem != null)
+        {
+            localStorageItem.Amount++;
+        }
+
+        await LocalStorage.SetItemAsStringAsync("Cart", JsonConvert.SerializeObject(CartItems.OrderItems));
+        await OnInitializedAsync();
+        await MainLayout.Update();
+    }
+
+    public async Task sub(int ProductID)
+    {
+        CartItems.OrderItems = new List<OrderItemDTO>();
+        CartItems.OrderItems = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+        OrderItemDTO localStorageItem = CartItems.OrderItems.FirstOrDefault(o => o.FK_ProductID == ProductID);
+
+        if (localStorageItem != null)
+        {
+            localStorageItem.Amount--;
+        }
+
+        if (localStorageItem.Amount == 0)
+        {
+            CartItems.OrderItems.Remove(localStorageItem);
+            CartItems.TotalPrice = 0.00M;
+        }
+
+        await LocalStorage.SetItemAsStringAsync("Cart", JsonConvert.SerializeObject(CartItems.OrderItems));
+        await OnInitializedAsync();
+        await MainLayout.Update();
+    }
+
+
+
+    public async Task ClearBasketAsync()
+    {
+        await LocalStorage.SetItemAsStringAsync("Basket", "");
+        await OnInitializedAsync();
+        await MainLayout.Update();
+    }
+}

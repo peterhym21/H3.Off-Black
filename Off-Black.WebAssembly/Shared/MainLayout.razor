@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager Nav
+@inject ILocalStorageService LocalStorage
 
 <div class="page">
     <div class="sidebar">
@@ -7,11 +9,43 @@
 
     <div class="main">
         <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+            <button class="btn btn-success" @onclick='() => Nav.NavigateTo("/Cart")'>@CartCount <i class="fas fa-shopping-basket"></i></button>
         </div>
 
         <div class="content px-4">
-            @Body
+            <CascadingValue Value="this">
+                @Body
+            </CascadingValue>
         </div>
     </div>
 </div>
+
+@code{
+    int CartCount { get; set; } = 0;
+    List<OrderItemDTO> localStorage = new List<OrderItemDTO>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (await LocalStorage.ContainKeyAsync("Cart"))
+        {
+            localStorage = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+
+            CartCount = localStorage.Select(b => b.Amount).Sum();
+        }
+
+        await base.OnInitializedAsync();
+    }
+
+    public async Task Update()
+    {
+
+        if (await LocalStorage.ContainKeyAsync("Cart"))
+        {
+            localStorage = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+
+            CartCount = localStorage.Select(b => b.Amount).Sum();
+        }
+        StateHasChanged();
+    }
+
+}
