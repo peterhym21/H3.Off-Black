@@ -1,0 +1,29 @@
+﻿@page "/ProdcutDetails/{Id:int}"
+@inject HttpClient Http
+
+@if (Product != null)
+{
+    <div class="text-center">
+        <h2>@Product.ProductName</h2>
+
+        <h4>@Product.Price</h4>
+
+        <p>@Product.ProductDescription</p>
+
+        <img src="@Product.ProductImagePath" alt="Alternate Text" height="300" />
+    </div>
+    <br />
+}
+
+
+@code {
+    public ProductDTO Product { get; set; }
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Product = await Http.GetFromJsonAsync<ProductDTO>($"http://localhost:4020/Product/ById/{Id}");
+    }
+}
+

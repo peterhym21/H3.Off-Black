@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off-Black.Wep", "Off-Black.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off-Black.API", "Off-Black.API\Off-Black.API.csproj", "{8E10D813-1430-497D-ADCC-3A7B8ED55299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Off-Black.WebAssembly", "Off-Black.WebAssembly\Off-Black.WebAssembly.csproj", "{0A3FB89D-831F-4E8D-908E-A0F23DB64935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off-Black.WebAssembly", "Off-Black.WebAssembly\Off-Black.WebAssembly.csproj", "{0A3FB89D-831F-4E8D-908E-A0F23DB64935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

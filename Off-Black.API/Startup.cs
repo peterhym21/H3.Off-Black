@@ -31,7 +31,6 @@ namespace Off_Black.API
         public IConfiguration Configuration { get; }
 
 
-        #region with swagger
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -72,54 +71,10 @@ namespace Off_Black.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Off_Black.API", Version = "v1" });
             });
+
         }
 
-        #endregion
-
-        #region without swagger
-        // This method gets called by the runtime. Use this method to add services to the container.
-        //public void ConfigureServices(IServiceCollection services)
-        //{
-        //    #region Scopes
-        //    services.AddScoped<MappingService, MappingService>();
-
-        //    services.AddScoped<ICategoryService, CategoryService>();
-        //    services.AddScoped<ICategoryRepository, CategoryRepository>();
-
-        //    services.AddScoped<ICustomerService, CustomerService>();
-        //    services.AddScoped<ICustomerRepository, CustomerRepository>();
-
-        //    services.AddScoped<IOrderItemService, OrderItemService>();
-        //    services.AddScoped<IOrderItemRepository, OrderItemRepository>();
-
-        //    services.AddScoped<IOrderService, OrderService>();
-        //    services.AddScoped<IOrderRepository, OrderRepository>();
-
-        //    services.AddScoped<IProductService, ProductService>();
-        //    services.AddScoped<IProductRepository, ProductRepository>();
-
-        //    services.AddScoped<IUserService, UserService>();
-        //    services.AddScoped<IUserRepository, UserRepository>();
-
-        //    #endregion
-
-        //    services.AddDbContext<OffBlackContext>(options => options
-        //        .UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = OffBlackDB; Trusted_Connection = True; ")
-        //        .EnableSensitiveDataLogging(true));
-
-        //    //services.AddControllers(); // Outputs it Defualt to JSON
-        //    // services.AddControllers().AddXmlSerializerFormatters() // also output it to XML insted of JSON But Does not work in this project for som reason
-        //    services.AddControllers().AddXmlSerializerFormatters().AddXmlDataContractSerializerFormatters(); // output it to XML insted of JSON
-
-        //    services.AddCors();
-        //    services.AddControllers();
-        //}
-
-        #endregion
-
-
-        #region with swagger
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // This method gets called by the runtime.Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -142,35 +97,8 @@ namespace Off_Black.API
                 endpoints.MapControllers();
             });
         }
-        #endregion
 
-        #region without Swagger
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        //{
-        //    if (env.IsDevelopment())
-        //    {
-        //        app.UseDeveloperExceptionPage();
-        //    }
-
-        //    app.UseHttpsRedirection();
-        //    app.UseBlazorFrameworkFiles(); // Sørger for at blazor webassembly appen kan loade de frameworks (DLL) den skal bruge for at køre i browseren 
-
-        //    app.UseStaticFiles(); //loader statiske filer fx billeder fra serveren
-
-        //    app.UseEndpoints(endpoints =>
-        //    {
-        //        endpoints.MapRazorPages();
-
-        //        endpoints.MapControllers();
-
-        //        endpoints.MapFallbackToFile("index.html");  // setter endpoint til index.html
-
-        //    });
-        //}
-
-        #endregion
 
     }
 }
