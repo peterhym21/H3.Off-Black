@@ -45,6 +45,10 @@
 
             CartCount = localStorage.Select(b => b.Amount).Sum();
         }
+        if (!await LocalStorage.ContainKeyAsync("Cart"))
+        {
+            CartCount = 0;
+        }
         StateHasChanged();
     }
 

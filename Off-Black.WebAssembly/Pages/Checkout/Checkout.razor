@@ -1,0 +1,143 @@
+﻿@page "/Checkout"
+@inject ILocalStorageService LocalStorage
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (Order != null)
+{
+    <div class="row">
+        <div class="col-8">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label>First name</label>
+                    <input type="text" class="form-control" placeholder="First name" required @bind="Order.Customer.FirstName" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Last name</label>
+                    <input type="text" class="form-control" placeholder="Last name" required @bind="Order.Customer.LastName" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Email" required @bind="Order.Customer.Email" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="Phone Number" required @bind="Order.Customer.PhoneNumber" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="City" required @bind="Order.Customer.City" />
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label>Adress</label>
+                    <input type="text" class="form-control" placeholder="Adress" required @bind="Order.Customer.Adress" />
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label>Zip</label>
+                    <input type="text" class="form-control" placeholder="Zip" required @bind="Order.Customer.ZipCode" />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="radio" />
+                <label>
+                    Vias, DK, MasterCard
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="radio" />
+                <label>
+                    Paypal
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="radio" />
+                <label>
+                    MobilePay
+                </label>
+            </div>
+            <div class="form-group float-left">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" required>
+                    <label class="form-check-label">
+                        Agree to terms and conditions
+                    </label>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-success float-right" @onclick="PlaceOrder">Place Order</button>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="text-center">
+                <table class="text-center col-12 table">
+                    <tr>
+                        <th>Picture</th>
+                        <th>Name</th>
+                        <th>Price pr.</th>
+                        <th>Price Total Product</th>
+                        <th>Amount</th>
+                    </tr>
+                    @foreach (var item in Order.OrderItems)
+                    {
+                        <tr>
+                            <td><img src="@item.Product.ProductImagePath" alt="prorduct Image" height="75" /></td>
+                            <td>@item.Product.ProductName</td>
+                            <td>@item.Product.Price Kr. </td>
+                            <td>@(item.Product.Price * item.Amount) Kr.</td>
+                            <td>@item.Amount</td>
+                        </tr>
+                    }
+                </table>
+                <div>
+                    <h3>Toalt Price : @Order.TotalPrice</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+
+@code {
+
+    [CascadingParameter] public MainLayout MainLayout { get; set; }
+    public OrderDTO Order { get; set; } = new OrderDTO();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Order.OrderDate = DateTime.Now;
+        Order.Customer = new CustomerDTO();
+        Order.OrderItems = new List<OrderItemDTO>();
+        Order.OrderItems = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
+        Order.TotalPrice = 0;
+        foreach (var item in Order.OrderItems)
+        {
+            if (item.Amount > 1)
+            {
+                for (int i = 0; i < item.Amount; i++)
+                {
+                    Order.TotalPrice += item.Product.Price;
+                }
+            }
+            else
+            {
+                Order.TotalPrice += item.Product.Price;
+            }
+
+        }
+        base.OnInitialized();
+    }
+
+    public async Task PlaceOrder()
+    {
+        await Http.PostAsJsonAsync<OrderDTO>("http://localhost:4020/Order/CustomCreate", Order);
+        await LocalStorage.ClearAsync();
+        await MainLayout.Update();
+        NavigationManager.NavigateTo("Conformation");
+    }
+
+
+}

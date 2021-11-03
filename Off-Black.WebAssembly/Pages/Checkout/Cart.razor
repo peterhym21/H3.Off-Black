@@ -1,37 +1,49 @@
 ﻿@page "/Cart"
 @inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+
+@if (CartItems != null)
+{
 
 
-<table class="text-center col-12 table">
-    <tr>
-        <th>Picture</th>
-        <th>Name</th>
-        <th>Price pr.</th>
-        <th>Price Total Product</th>
-        <th>Amount</th>
-    </tr>
-    @foreach (var cartitems in CartItems.OrderItems)
-    {
+    <table class="text-center col-12 table">
         <tr>
-            <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="100" /></td>
-            <td>@cartitems.Product.ProductName</td>
-            <td>@cartitems.Product.Price kr.</td>
-            <td>@(cartitems.Product.Price * cartitems.Amount) kr.</td>
-            <td>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" @onclick="() => sub(cartitems.FK_ProductID)" class="btn btn-danger"><i class="fas fa-minus"></i></button>
-                    <div class="btn btn-light">@cartitems.Amount</div>
-                    <button type="button" @onclick="() => Add(cartitems.FK_ProductID)" class="btn btn-success"><i class="fas fa-plus "></i></button>
-                </div>
-            </td>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Price pr.</th>
+            <th>Price Total Product</th>
+            <th>Amount</th>
         </tr>
-    }
+        @foreach (var cartitems in CartItems.OrderItems)
+        {
+            <tr>
+                <td><img src="@cartitems.Product.ProductImagePath" alt="prorduct Image" height="100" /></td>
+                <td>@cartitems.Product.ProductName</td>
+                <td>@cartitems.Product.Price Kr.</td>
+                <td>@(cartitems.Product.Price * cartitems.Amount) Kr.</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" @onclick="() => sub(cartitems.FK_ProductID)" class="btn btn-danger"><i class="fas fa-minus"></i></button>
+                        <div class="btn btn-light">@cartitems.Amount</div>
+                        <button type="button" @onclick="() => Add(cartitems.FK_ProductID)" class="btn btn-success"><i class="fas fa-plus "></i></button>
+                    </div>
+                </td>
+            </tr>
+        }
 
-</table>
-<div>
-    <h3>Toalt Price : @CartItems.TotalPrice</h3>
-</div>
+    </table>
+    <div class="text-center">
+        <h3>Toalt Price : @CartItems.TotalPrice Kr.</h3>
+    </div>
 
+    <div class="float-right">
+        <a href="/Checkout" class="btn btn-success">Checkout</a>
+    </div>
+
+    <div class="float-left">
+        <button class="btn btn-success" @onclick="ClearCart">Clear Cart</button>
+    </div>
+}
 
 @code {
 
@@ -43,6 +55,7 @@
         CartItems.OrderItems = new List<OrderItemDTO>();
         CartItems.OrderItems = JsonConvert.DeserializeObject<List<OrderItemDTO>>(await LocalStorage.GetItemAsStringAsync("Cart"));
         CartItems.TotalPrice = 0;
+
         foreach (var item in CartItems.OrderItems)
         {
             if (item.Amount > 1)
@@ -58,6 +71,7 @@
             }
 
         }
+
         base.OnInitialized();
     }
 
@@ -102,10 +116,10 @@
 
 
 
-    public async Task ClearBasketAsync()
+    public async Task ClearCart()
     {
-        await LocalStorage.SetItemAsStringAsync("Basket", "");
-        await OnInitializedAsync();
+        await LocalStorage.ClearAsync();
         await MainLayout.Update();
+        NavigationManager.NavigateTo("Index");
     }
 }

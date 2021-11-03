@@ -86,9 +86,12 @@ namespace Off_Black.API
 
             app.UseHttpsRedirection();
 
-            app.UseCors(o => o.AllowAnyOrigin());
-
             app.UseRouting();
+
+            app.UseCors( o => {
+                o.AllowAnyOrigin();
+                o.AllowAnyHeader();
+                });
 
             app.UseAuthorization();
 
