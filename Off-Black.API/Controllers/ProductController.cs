@@ -30,7 +30,7 @@ namespace Off_Black.API.Controllers
         }
 
         [HttpGet]
-        [Route("AllMenByCategory{Id:int}")]
+        [Route("AllMenByCategory/{Id:int}")]
         public async Task<List<ProductDTO>> GetAllMenByCategory(int Id)
         {
             return await _productService.GetAllMenByCategory(Id);

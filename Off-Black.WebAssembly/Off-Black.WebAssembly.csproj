@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Off-Black.Services\Off-Black.Service.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Woman\" />
-  </ItemGroup>
-
 </Project>

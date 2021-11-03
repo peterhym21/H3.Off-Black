@@ -1,0 +1,15 @@
+﻿@page "/Men/Jackets/{Id:int}"
+@inject HttpClient Http
+
+<ProductsView ProductDTOs="ProductDTOs" />
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public List<ProductDTO> ProductDTOs { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ProductDTOs = await Http.GetFromJsonAsync<List<ProductDTO>>($"http://localhost:4020/Product/AllMenByCategory/{Id}");
+    }
+}

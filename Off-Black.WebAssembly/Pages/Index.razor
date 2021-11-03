@@ -1,6 +1,7 @@
 ﻿@page "/"
 @page "/Index"
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <h1>Off.Black</h1>
 
@@ -14,11 +15,11 @@
             <div class="row">
                 <div class="col-6">
                     <h5>Man</h5>
-                    <a asp-page="/Men/@item.Name" asp-route-CategoryId="@item.CategoryID"><img src="@item.CategoryImage1" alt="CategoryImage" height="400" class="hover-shadow" /></a>
+                    <a href="/Men/@item.Name/@item.CategoryID"><img src="@item.CategoryImage1" alt="CategoryImage" height="400" class="hover-shadow" /></a>
                 </div>
                 <div class="col-6 ">
                     <h5>Woman</h5>
-                    <a asp-page="/Woman/@item.Name" asp-route-CategoryId="@item.CategoryID"><img src="@item.CategoryImage2" alt="CategoryImage" height="400" class="hover-shadow" /></a>
+                    <a href="/Women/@item.Name/@item.CategoryID"><img src="@item.CategoryImage2" alt="CategoryImage" height="400" class="hover-shadow" /></a>
                 </div>
             </div>
             <br />
@@ -30,10 +31,10 @@
 
 
 @code{
-        // .\Off-Black.API.exe --urls "http://*:4020"    Start API on Port 4020 localhost
-        public List<CategoryDTO> categoryDTO { get; set; }
-        protected override async Task OnInitializedAsync()
-        {
-            categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
-        }
+    // .\Off-Black.API.exe --urls "http://*:4020"    Start API on Port 4020 localhost
+    public List<CategoryDTO> categoryDTO { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
     }
+}
