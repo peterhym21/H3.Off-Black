@@ -1,6 +1,7 @@
 ﻿@page "/Conformation"
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject IToastService ToastService
 
 
 <div class="text-center">
@@ -33,6 +34,7 @@
     protected override async Task OnInitializedAsync()
     {
         Order = await Http.GetFromJsonAsync<OrderDTO>($"http://localhost:4020/Order/LastOrder");
+        ToastService.ShowSuccess("Thank you for your order");
     }
 
 }

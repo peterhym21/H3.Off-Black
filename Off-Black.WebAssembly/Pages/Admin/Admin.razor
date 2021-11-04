@@ -1,7 +1,6 @@
 ﻿@page "/Super/Secret/Admin/Page"
 @inject HttpClient Http
-<h3>Admin</h3>
-
+@inject IToastService ToastService
 <div class="row">
     <div class="col-8 ">
         <input class="form-control" type="text" placeholder="Seach Here" @bind="SearchTerm" />
@@ -58,6 +57,7 @@
     {
         await Http.PutAsJsonAsync<ProductDTO>($"http://localhost:4020/Product/Delete", product);
         await OnInitializedAsync();
+        ToastService.ShowInfo("Delete the Product");
     }
 
 }

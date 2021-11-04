@@ -1,6 +1,7 @@
 ﻿@page "/Super/Secret/Admin/Page/Create"
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject IToastService ToastService
 
 @if (categoryDTOs != null)
 {
@@ -66,6 +67,7 @@
 
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
+            ToastService.ShowSuccess("Created the new Product");
             NavigationManager.NavigateTo("/Super/Secret/Admin/Page");
         }
         else

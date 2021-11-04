@@ -2,6 +2,7 @@
 @inject HttpClient Http
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject IToastService ToastService
 
 @if (Product != null)
 {
@@ -61,14 +62,8 @@
         await LocalStorage.SetItemAsStringAsync("Cart", sessionitem);
         StateHasChanged();
         await MainLayout.Update();
-        if (Product.Gender)
-        {
-            NavigationManager.NavigateTo("/Women");
-        }
-        else
-        {
-            NavigationManager.NavigateTo("/Men");
-        }
+
+        ToastService.ShowSuccess("Product Is added to Cart");
 
     }
 

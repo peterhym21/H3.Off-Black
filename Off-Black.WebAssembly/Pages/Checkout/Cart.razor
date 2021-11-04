@@ -1,6 +1,7 @@
 ﻿@page "/Cart"
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject IToastService ToastService
 
 @if (CartItems != null)
 {
@@ -90,6 +91,7 @@
         await LocalStorage.SetItemAsStringAsync("Cart", JsonConvert.SerializeObject(CartItems.OrderItems));
         await OnInitializedAsync();
         await MainLayout.Update();
+        ToastService.ShowInfo("The amount has been changed");
     }
 
     public async Task sub(int ProductID)
@@ -112,6 +114,7 @@
         await LocalStorage.SetItemAsStringAsync("Cart", JsonConvert.SerializeObject(CartItems.OrderItems));
         await OnInitializedAsync();
         await MainLayout.Update();
+        ToastService.ShowInfo("The amount has been changed");
     }
 
 
@@ -121,5 +124,6 @@
         await LocalStorage.ClearAsync();
         await MainLayout.Update();
         NavigationManager.NavigateTo("Index");
+        ToastService.ShowInfo("The cart has been cleart");
     }
 }

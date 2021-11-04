@@ -1,6 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager Nav
 @inject ILocalStorageService LocalStorage
+@using Blazored.Toast.Configuration
 
 <div class="page">
     <div class="sidebar">
@@ -11,6 +12,14 @@
         <div class="top-row px-4">
             <button class="btn btn-success" @onclick='() => Nav.NavigateTo("/Cart")'>@CartCount <i class="fas fa-shopping-basket"></i></button>
         </div>
+        <BlazoredToasts Position="ToastPosition.BottomCenter"
+                        Timeout="3"
+                        IconType="IconType.FontAwesome"
+                        ErrorIcon="fas fa-times-circle"
+                        InfoIcon="fas fa-info"
+                        SuccessIcon="fas fa-check"
+                        WarningIcon="fas fa-exclamation-triangle" 
+                        MaxToastCount="3"/>
 
         <div class="content px-4">
             <CascadingValue Value="this">

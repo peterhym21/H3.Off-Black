@@ -1,6 +1,7 @@
 ﻿@page "/Super/Secret/Admin/Page/Edit/{Id:int}"
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
+@inject IToastService ToastService
 
 @if (Product != null)
 {
@@ -33,7 +34,7 @@
             <br />
             <label>Check the box for Woman; Leave uncheked for Man</label>
             <br />
-            <input type="checkbox" class="form-control" @bind-value="Product.Gender"  checked="@Product.Gender"/>
+            <input type="checkbox" class="form-control" @bind-value="Product.Gender" checked="@Product.Gender" />
         </div>
 
         <div class="form-group">
@@ -75,6 +76,7 @@
 
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
+            ToastService.ShowInfo("Editet the Product");
             NavigationManager.NavigateTo("/Super/Secret/Admin/Page");
         }
         else
