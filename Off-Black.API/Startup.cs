@@ -91,6 +91,7 @@ namespace Off_Black.API
             app.UseCors( o => {
                 o.AllowAnyOrigin();
                 o.AllowAnyHeader();
+                o.AllowAnyMethod();
                 });
 
             app.UseAuthorization();

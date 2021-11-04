@@ -1,0 +1,86 @@
+﻿@page "/Super/Secret/Admin/Page/Edit/{Id:int}"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (Product != null)
+{
+    <EditForm EditContext="EditContext" OnValidSubmit="@OnValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="InputName">Product Name</label>
+            <input type="text" @bind-value="Product.ProductName" class="form-control" id="InputName" placeholder="Enter Name">
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Product Description</label>
+            <input type="text" @bind-value="Product.ProductDescription" class="form-control" id="InputName" placeholder="Enter Desctiption">
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Product Price</label>
+            <input type="number" @bind-value="Product.Price" class="form-control" id="InputName" placeholder="Enter Price">
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Amount In Stock</label>
+            <input type="number" @bind-value="Product.Amount" class="form-control" id="InputName" placeholder="Enter Amount">
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Man Or Woman</label>
+            <br />
+            <label>Check the box for Woman; Leave uncheked for Man</label>
+            <br />
+            <input type="checkbox" class="form-control" @bind-value="Product.Gender"  checked="@Product.Gender"/>
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Category</label>
+            <InputSelect class="form-control" @bind-Value="Product.FK_CategoryID">
+                <option selected>Select A Category</option>
+                @foreach (var item in categoryDTOs)
+                    {
+                    <option value="@item.CategoryID">@item.Name</option>
+                    }
+            </InputSelect>
+        </div>
+
+        <button type="submit" class="btn btn-success">Edit</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public ProductDTO Product { get; set; }
+    public List<CategoryDTO> categoryDTOs { get; set; }
+
+    public string ErrorMessage { get; set; }
+    private EditContext EditContext;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categoryDTOs = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
+        Product = await Http.GetFromJsonAsync<ProductDTO>($"http://localhost:4020/Product/ById/{Id}");
+        await base.OnInitializedAsync();
+        EditContext = new(Product);
+    }
+
+    public async Task OnValidSubmit()
+    {
+        var response = await Http.PutAsJsonAsync<ProductDTO>($"http://localhost:4020/Product/Update", Product);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/Super/Secret/Admin/Page");
+        }
+        else
+        {
+            ErrorMessage = $"{response.StatusCode} : {response.ReasonPhrase}";
+        }
+    }
+
+}

@@ -1,0 +1,77 @@
+﻿@page "/Super/Secret/Admin/Page/Create"
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (categoryDTOs != null)
+{
+    <div class="form-group">
+        <label for="InputName">Product Name</label>
+        <input type="text" @bind-value="Product.ProductName" class="form-control" id="InputName" placeholder="Enter Name">
+    </div>
+
+    <div class="form-group">
+        <label for="InputName">Product Description</label>
+        <input type="text" @bind-value="Product.ProductDescription" class="form-control" id="InputName" placeholder="Enter Desctiption">
+    </div>
+
+    <div class="form-group">
+        <label for="InputName">Product Price</label>
+        <input type="number" @bind-value="Product.Price" class="form-control" id="InputName" placeholder="Enter Desctiption">
+    </div>
+
+    <div class="form-group">
+        <label for="InputName">Amount In Stock</label>
+        <input type="number" @bind-value="Product.Amount" class="form-control" id="InputName" placeholder="Enter Amount">
+    </div>
+
+    <div class="form-group">
+        <label for="InputName">Man Or Woman</label>
+        <label>Check the box for Woman; Leave uncheked for Man</label>
+        <input type="checkbox" @bind-value="Product.Gender" />
+    </div>
+
+    <div class="form-group">
+        <label for="InputName">Category</label>
+        <select class="form-control" @bind="Product.FK_CategoryID">
+            <option selected>Select A Category</option>
+            @foreach (var item in categoryDTOs)
+            {
+                <option value="@item.CategoryID">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="text-center">
+        <button @onclick="CreateProductAsync" class="btn btn-success">Create Product</button>
+    </div>
+}
+
+
+@code {
+
+    public ProductDTO Product { get; set; } = new ProductDTO();
+    public List<CategoryDTO> categoryDTOs { get; set; }
+    public string ErrorMessage { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        categoryDTOs = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
+        await base.OnInitializedAsync();
+    }
+
+
+    public async Task CreateProductAsync()
+    {
+        Product.ProductImagePath = "/Img/No_image_available.svg.png";
+        var response = await Http.PostAsJsonAsync<ProductDTO>($"http://localhost:4020/Product/Create", Product);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/Super/Secret/Admin/Page");
+        }
+        else
+        {
+            ErrorMessage = $"{response.StatusCode} : {response.ReasonPhrase}";
+        }
+    }
+
+}
