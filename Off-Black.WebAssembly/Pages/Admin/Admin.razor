@@ -32,7 +32,7 @@
                 <td>@items.ProductName</td>
                 <td>@items.Amount</td>
                 <td><a href="/Super/Secret/Admin/Page/Edit/@items.ProductID" class="btn btn-success form-control">Edit</a></td>
-                <td><button class="btn btn-danger form-control" @onclick="() => Delete(items)">Delete</button></td>
+                <td><button @onclick="() => Delete(items)" class="btn btn-danger form-control">Delete</button></td>
             </tr>
         }
 

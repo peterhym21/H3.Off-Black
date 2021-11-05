@@ -4,27 +4,31 @@
 @inject IToastService ToastService
 
 
-<div class="text-center">
-    <h2>Tak For din Bestilling</h2>
-    <h4>Din order er på vej til dig</h4>
-    <br />
-    <table class="text-center col-12 table">
-        <tr>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Amount</th>
-        </tr>
-        @foreach (var items in Order.OrderItems)
-        {
+@if (Order.OrderItems != null)
+{
+    <div class="text-center">
+        <h2>Tak For din Bestilling</h2>
+        <h4>Din order er på vej til dig</h4>
+        <br />
+        <table class="text-center col-12 table">
             <tr>
-                <td><img src="@items.Product.ProductImagePath" alt="prorduct Image" height="75" /></td>
-                <td>@items.Product.ProductName</td>
-                <td>@items.Amount</td>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Amount</th>
             </tr>
-        }
+            @foreach (var items in Order.OrderItems)
+            {
+                <tr>
+                    <td><img src="@items.Product.ProductImagePath" alt="prorduct Image" height="75" /></td>
+                    <td>@items.Product.ProductName</td>
+                    <td>@items.Amount</td>
+                </tr>
+            }
 
-    </table>
-</div>
+        </table>
+    </div>
+
+}
 
 @code {
 
@@ -33,7 +37,7 @@
     protected override async Task OnInitializedAsync()
     {
         Order = await Http.GetFromJsonAsync<OrderDTO>($"http://localhost:4020/Order/LastOrder");
-        ToastService.ShowSuccess("Thank you for your order");
+        //ToastService.ShowSuccess("Thank you for your order");
     }
 
 }
