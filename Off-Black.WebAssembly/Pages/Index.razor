@@ -3,39 +3,45 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 
-<h1>Off.Black</h1>
+    <div class="text-center col-12">
+        <h1> Welcome To: </h1>
+        <img src="~/Off-Black-logos/Off-black-logo.png" alt="Off-black Logo" height="400" />
+    </div>
+
+    <br />
+    <br />
 
 
-<div class="text-center">
-    @if (categoryDTO != null)
-    {
-        @foreach (var item in categoryDTO)
+    <div class="text-center">
+        @if (categoryDTO != null)
         {
-            <h3>@item.Name</h3>
-            <div class="row">
-                <div class="col-6">
-                    <h5>Man</h5>
-                    <a href="/Men/@item.Name/@item.CategoryID"><img src="@item.CategoryImage1" alt="CategoryImage" height="400" class="hover-shadow" /></a>
+            @foreach (var item in categoryDTO)
+            {
+                <h3>@item.Name</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Man</h5>
+                        <a href="/Men/@item.Name/@item.CategoryID"><img src="@item.CategoryImage1" alt="CategoryImage" height="400" class="hover-shadow" /></a>
+                    </div>
+                    <div class="col-6 ">
+                        <h5>Woman</h5>
+                        <a href="/Women/@item.Name/@item.CategoryID"><img src="@item.CategoryImage2" alt="CategoryImage" height="400" class="hover-shadow" /></a>
+                    </div>
                 </div>
-                <div class="col-6 ">
-                    <h5>Woman</h5>
-                    <a href="/Women/@item.Name/@item.CategoryID"><img src="@item.CategoryImage2" alt="CategoryImage" height="400" class="hover-shadow" /></a>
-                </div>
-            </div>
-            <br />
-            <br />
+                <br />
+                <br />
+            }
+        }
+    </div>
+
+
+
+    @code{
+        // .\Off-Black.API.exe --urls "http://*:4020"    Start API on Port 4020 localhost
+        // C:\skole\eux\H3\DB_Prog_3\Off-Black\Off-Black.API\bin\Debug\net5.0
+        public List<CategoryDTO> categoryDTO { get; set; }
+        protected override async Task OnInitializedAsync()
+        {
+            categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
         }
     }
-</div>
-
-
-
-@code{
-    // .\Off-Black.API.exe --urls "http://*:4020"    Start API on Port 4020 localhost
-    // C:\skole\eux\H3\DB_Prog_3\Off-Black\Off-Black.API\bin\Debug\net5.0
-    public List<CategoryDTO> categoryDTO { get; set; }
-    protected override async Task OnInitializedAsync()
-    {
-        categoryDTO = await Http.GetFromJsonAsync<List<CategoryDTO>>("http://localhost:4020/Category/All");
-    }
-}
