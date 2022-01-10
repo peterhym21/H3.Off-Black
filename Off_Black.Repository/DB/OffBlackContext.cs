@@ -5,7 +5,6 @@ namespace Off_Black.DB
 {
     public class OffBlackContext : DbContext
     {
-        public OffBlackContext() {}
         public OffBlackContext(DbContextOptions<OffBlackContext> optionsBuilder) : base(optionsBuilder) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

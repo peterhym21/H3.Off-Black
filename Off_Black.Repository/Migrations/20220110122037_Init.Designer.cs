@@ -10,7 +10,7 @@ using Off_Black.DB;
 namespace Off_Black.Migrations
 {
     [DbContext(typeof(OffBlackContext))]
-    [Migration("20211022060751_Init")]
+    [Migration("20220110122037_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
