@@ -4,10 +4,10 @@
 
 <form method="post">
     <div class="input-group text-right">
-        <select asp-for="@Model.PageSize" asp-items="Html.GetEnumSelectList<Off_Black.Wep.Pages.MenModel.PageSizeEnum>()">
+        <select id="Pagesize" asp-for="@Model.PageSize" asp-items="Html.GetEnumSelectList<Off_Black.Wep.Pages.MenModel.PageSizeEnum>()">
             <option value="">Pagesize</option>
         </select>
-        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+        <button name="Search" type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
     </div>
 </form>
 
@@ -23,7 +23,7 @@
             @for (var i = 1; i <= Model.TotalPages; i++)
             {
                 <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                    <a asp-page="" 
+                    <a name="@i" asp-page="" 
                        asp-route-currentpage="@i" 
                        asp-route-pagesize="@Model.PageSize" 
                        class="page-link">@i</a>

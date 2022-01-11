@@ -2,7 +2,7 @@
 @foreach (var item in Model)
 {
     <div class=" col-6">
-        <a class="RemoveLinkStyel hover-shadow" asp-page="../ProductDetails" asp-route-ProductId="@item.ProductID">
+        <a class="RemoveLinkStyel hover-shadow" id="@item.ProductID" asp-page="../ProductDetails" asp-route-ProductId="@item.ProductID">
             <img src="@item.ProductImagePath" alt="CategoryImage" height="400" />
             <h5>@item.ProductName</h5>
             <h5>@item.Price Kr.</h5>

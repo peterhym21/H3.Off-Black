@@ -15,7 +15,7 @@
 
 <form method="post">
     <div class="input-group w-50 mx-auto col-12 ">
-        <input type="search" placeholder="Seach Here" asp-for="@Model.SearchTerm" />
+        <input id="Search" type="search" placeholder="Seach Here" asp-for="@Model.SearchTerm" />
         <select asp-for="@Model.PriceFilter">
             <option>High-Low</option>
             <option>Low-High</option>
@@ -23,7 +23,7 @@
         <select asp-for="@Model.PageSize" asp-items="Html.GetEnumSelectList<Off_Black.Wep.Pages.IndexModel.PageSizeEnum>()">
             <option value="">Pagesize</option>
         </select>
-        <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+        <button name="Search" type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
     </div>
 </form>
 

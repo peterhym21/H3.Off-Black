@@ -10,14 +10,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E67B7DDA-4DF3-40A1-BDDA-FBEACD26A5E9}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		TestManual.md = TestManual.md
 		ToDo.md = ToDo.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off-Black.Wep", "Off-Black.Wep\Off-Black.Wep.csproj", "{A9D138D6-A464-4D4A-8FB6-AE3857EB669B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTest", "xUnitTest\xUnitTest.csproj", "{07C073C7-EFC1-4963-A191-F5BAD6EAE1BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitTest", "xUnitTest\xUnitTest.csproj", "{07C073C7-EFC1-4963-A191-F5BAD6EAE1BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTestWeb", "xUnitTestWeb\xUnitTestWeb.csproj", "{082A34E4-14E7-4C15-A703-FE8F830886E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitTestWeb", "xUnitTestWeb\xUnitTestWeb.csproj", "{082A34E4-14E7-4C15-A703-FE8F830886E8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A9D138D6-A464-4D4A-8FB6-AE3857EB669B} = {A9D138D6-A464-4D4A-8FB6-AE3857EB669B}
 	EndProjectSection

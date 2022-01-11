@@ -72,14 +72,14 @@ namespace Off_Black.Wep.Pages
                 ProductDTOs = await _productService.GetAllByAllFilters(SearchTerm, CurrentPage, PageSize);
                 Count = await _productService.GetCountAll(SearchTerm);
             }
-            if (PriceFilter == "Low-High")
-            {
-                ProductDTOs = await _productService.GetAllSortetPriceASC();
-            }
-            if (PriceFilter == "High-Low")
-            {
-                ProductDTOs = await _productService.GetAllSortetPriceDESC();
-            }
+            //if (PriceFilter == "Low-High")
+            //{
+            //    ProductDTOs = await _productService.GetAllSortetPriceASC();
+            //}
+            //if (PriceFilter == "High-Low")
+            //{
+            //    ProductDTOs = await _productService.GetAllSortetPriceDESC();
+            //}
 
             CategoryDTO = await _categoryService.GetAll();
         }
