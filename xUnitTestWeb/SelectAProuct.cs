@@ -14,7 +14,7 @@ namespace xUnitTestWeb
     {
         const string homeUrl = "https://localhost:44307/";
         const string MenUrl = "https://localhost:44307/Men/Men";
-        const string homeTitle = "Off-Black";
+        const string DetailsUrl = "https://localhost:44307/ProductDetails/1";
 
         [Fact]
         [Trait("Category", "Application")]
@@ -35,9 +35,7 @@ namespace xUnitTestWeb
 
                 Thread.Sleep(3000);
 
-
-                Assert.Equal(homeUrl, driver.Title);
-                Assert.Equal(MenUrl, driver.Url);
+                Assert.Equal(DetailsUrl, driver.Url);
             }
         }
     }

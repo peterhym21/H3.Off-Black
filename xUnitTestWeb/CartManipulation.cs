@@ -15,7 +15,6 @@ namespace xUnitTestWeb
 
         const string homeUrl = "https://localhost:44307/";
         const string MenUrl = "https://localhost:44307/Men/Men";
-        const string homeTitle = "Off-Black";
 
 
         [Fact]
@@ -49,8 +48,7 @@ namespace xUnitTestWeb
 
                 Thread.Sleep(2000);
 
-                Assert.Equal(homeUrl, driver.Title);
-                Assert.Equal(MenUrl, driver.Url);
+                Assert.Equal("https://localhost:44307/Cart", driver.Url);
             }
         }
 
@@ -83,8 +81,7 @@ namespace xUnitTestWeb
                 Thread.Sleep(2000);
 
 
-                Assert.Equal(homeUrl, driver.Title);
-                Assert.Equal(MenUrl, driver.Url);
+                Assert.Equal("https://localhost:44307/Cart", driver.Url);
             }
         }
 
@@ -113,8 +110,7 @@ namespace xUnitTestWeb
                 Thread.Sleep(2000);
 
 
-                Assert.Equal(homeUrl, driver.Title);
-                Assert.Equal(MenUrl, driver.Url);
+                Assert.Equal("https://localhost:44307/Cart", driver.Url);
             }
         }
 
@@ -143,8 +139,7 @@ namespace xUnitTestWeb
                 Thread.Sleep(2000);
 
 
-                Assert.Equal(homeUrl, driver.Title);
-                Assert.Equal(MenUrl, driver.Url);
+                Assert.Equal(homeUrl, driver.Url);
             }
         }
 

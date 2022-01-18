@@ -26,7 +26,7 @@ namespace xUnitTestWeb
                 Thread.Sleep(3000);
 
                 Assert.Equal(homeTitle, driver.Title);
-                Assert.Equal(homeUrl, driver.Url);
+                Assert.Equal(MenUrl, driver.Url);
             }
         }
     }

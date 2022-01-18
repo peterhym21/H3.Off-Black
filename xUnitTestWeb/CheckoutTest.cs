@@ -20,7 +20,7 @@ namespace xUnitTestWeb
 
         [Fact]
         [Trait("Category", "Application")]
-        public void NavigateToProductAndGoToDetailsAndAddToCart()
+        public void NavigateToProductAndGoToDetailsAndAddToCartAndCheckOut()
         {
             using (IWebDriver driver = new ChromeDriver())
             {
@@ -61,8 +61,7 @@ namespace xUnitTestWeb
 
                 Thread.Sleep(3000);
 
-                Assert.Equal(homeUrl, driver.Title);
-                Assert.Equal(MenUrl, driver.Url);
+                Assert.Equal("https://localhost:44307/Checkout/CheckoutConformation", driver.Url);
             }
         }
     }

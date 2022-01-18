@@ -1,12 +1,26 @@
 ﻿# Test Manual
 
-- [X] naviger til en vare
-- [X] tilføj vare til cart
-- [X] updater varen i cart 
+- [X] naviger til et product
+- [X] tilføj prduct til cart
+- [X] updater product i cart 
   - [X] ændre amounten
-  - [X] slette en vare 
+  - [X] slette en product
 - [X] lave en checkout 
 - [X] test filter
   - [X] test paging
   - [X] test Search 
+
+<br>
+
+
+- GoToMenClothingPage : OK
+- NavigateToProductAndGoToDetails : OK
+- UseThePagingOnMen : OK
+- UseingSeachFilterOnFrontPage : OK
+- NavigateToProductAndGoToDetailsAndAddToCart : OK
+- IncreassAmountOfCartItem : OK
+- DeleteCartAmount : OK
+- BackToLookAtMoreProducts : OK
+- NavigateToProductAndGoToDetailsAndAddToCartAndCheckOut : OK
+
 
